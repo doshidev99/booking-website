@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import SwiperCore, { A11y, Autoplay, Navigation, Pagination, Scrollbar } from 'swiper';
 import 'swiper/components/effect-cube/effect-cube.min.css';
@@ -13,12 +13,21 @@ import AppNotFound from '../../components/AppNotFound'
 import 'swiper/swiper.scss';
 import './homepage.scss';
 
-
+import { getAllTourType } from '../../redux/actionTypes'
+import { Spin } from 'antd';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
 
 const HomePage = () => {
+  const dispatch = useDispatch()
+
+  const { loadingState: { loadingGetAllTour, loadingSearch }, tourState: { tours } } = useSelector(currentState => currentState)
+
+  useEffect(() => {
+    dispatch({ type: getAllTourType.request })
+  }, [dispatch])
+
 
   const renderSlide = () => (
     <Swiper
@@ -28,7 +37,7 @@ const HomePage = () => {
       autoplay={{ delay: 3000 }}
       loop
     >
-      {/* {showTopDestination(listTour)} */}
+      {showTopDestination(tours)}
     </Swiper>
   )
 
@@ -51,6 +60,8 @@ const HomePage = () => {
                 <div className="img-destination-item">
                   <NavLink to={`/detail-tour/${item._id}`}>
                     {/* <img src={`${USER_IMG}/${item.avatar}`} alt="" /> */}
+                    <img src='https://picsum.photos/200' alt="" />
+
                   </NavLink>
                 </div>
                 <div className="title-destination-item">
@@ -70,8 +81,8 @@ const HomePage = () => {
 
   const renderAllTour = () => {
     let result = null;
-    if ([].length) {
-      result = [].map((tour, index) => {
+    if (tours.length) {
+      result = tours.map((tour, index) => {
         if (tour !== undefined) {
           return (
             // eslint-disable-next-line react/no-array-index-key
@@ -80,6 +91,7 @@ const HomePage = () => {
                 <div className="img-tour-item">
                   <NavLink className="navLink" to={`/detail-tour/${tour._id}`}>
                     {/* <img src={`${USER_IMG}/${tour.avatar}`} alt="" /> */}
+                    <img src='https://picsum.photos/200' alt="" />
                   </NavLink>
                 </div>
                 <div className="name-tour">
@@ -115,6 +127,9 @@ const HomePage = () => {
     return result;
   }
 
+
+  if (loadingGetAllTour) return <Spin />
+
   return (
     <PrivateLayout>
       <div>
@@ -128,6 +143,10 @@ const HomePage = () => {
               </div>
               <div className="list-our-tour">
                 <Row>
+                  {
+                    loadingSearch && <Spin />
+                  }
+
                   {renderAllTour()}
                 </Row>
               </div>
@@ -150,11 +169,16 @@ const HomePage = () => {
                   loop
                   scrollbar={{ draggable: true }}
                 >
+
                   <SwiperSlide>
                     <div className="img-slide-travel-tip">
-                      <img src="../../../img/travel-tip-1.svg" alt="" />
+                      {/* <img src={`../../../public/img/t${index + 1}.jpeg`} alt="" /> */}
+                      <img src='https://picsum.photos/200
+' alt="" />
                     </div>
                   </SwiperSlide>
+
+
 
                 </Swiper>
               </div>

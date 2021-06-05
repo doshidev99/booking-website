@@ -1,3 +1,6 @@
+
+import { Toastify } from './toast'
+
 export const apiErrorHandler = (error) => {
 	let title = '';
 	let message = 'Something wrong';
@@ -10,5 +13,6 @@ export const apiErrorHandler = (error) => {
 	} else {
 		message = error.message;
 	}
-	alert(title, message);
+	Toastify({ msg: `${error.response.data.message}`, type: 'error' });
+
 };
