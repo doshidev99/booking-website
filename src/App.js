@@ -15,6 +15,8 @@ import PageEditUser from "./pages/PageAdmin/Users/EditUser";
 import PageAllEmployee from './pages/PageAdmin/Employee/AllEmployee';
 import PageAddEmployee from './pages/PageAdmin/Employee/AddEmployee';
 import PageEditEmployee from './pages/PageAdmin/Employee/EditEmployee';
+
+import Chat from "./pages/PageAdmin/Chat/Chat";
 function App() {
   return (
     <Router>
@@ -33,6 +35,8 @@ function App() {
           <Route exact path="/admin/all-employee" component={PageAllEmployee} />
           <Route exact path="/admin/add-employee" component={PageAddEmployee} />
           <Route exact path="/admin/edit-employee" component={PageEditEmployee} />
+          
+          <Route exact path="/admin/chat" component={Chat} />
 
           <Route path="/" component={HomePage} />
           <Route component={NotFoundPage} />
