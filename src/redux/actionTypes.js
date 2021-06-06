@@ -15,6 +15,9 @@ export const getAllTourType = createActionTypes('GET_ALL_TOUR');
 export const getTourByIdType = createActionTypes('GET_TOUR_BY_ID');
 export const bookingType = createActionTypes('BOOKING');
 export const searchType = createActionTypes('SEARCH');
+export const delTourType = createActionTypes('DEL_TOUR');
+export const updateTourType = createActionTypes('UPDATE_TOUR');
+export const addTourType = createActionTypes('ADD_TOUR');
 
 export const getAllUserType = createActionTypes('GET_ALL_USER');
 export const addUserType = createActionTypes('ADD_USER');

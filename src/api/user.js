@@ -41,7 +41,7 @@ export const userApi = {
 	updateUser: async ({ id, data }) => {
 		try {
 			const res = await axios.put(
-				`/user/update-userID/${id}`,
+				`/user/update-user/${id}`,
 				data
 			);
 			return res;
@@ -54,8 +54,8 @@ export const userApi = {
 
 	delUser: async (id) => {
 		try {
-			const res = await axios.put(
-				`/user/delete-userID/${id}`,
+			const res = await axios.delete(
+				`/user/delete-user/${id}`,
 			);
 			return res;
 		} catch (error) {

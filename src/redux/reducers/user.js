@@ -10,7 +10,8 @@ import { Toastify } from '../../utils/toast'
 
 const initialState = {
 	listUsers: [],
-	singleUsers: {}
+	singleUsers: {},
+	isRefresh: null
 }
 
 const chatRoom = (state = initialState, action) => {
@@ -33,11 +34,13 @@ const chatRoom = (state = initialState, action) => {
 
 			return {
 				...state,
+				isRefresh: Date.now()
 			}
 		case delUserType.success:
 			Toastify({ msg: 'Delete user successfully', type: 'success' });
 			return {
 				...state,
+				isRefresh: Date.now()
 			}
 
 		case getUserByIdType.success:

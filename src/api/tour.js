@@ -24,6 +24,29 @@ export const tourApi = {
 			throw error;
 		}
 	},
+	delTour: async (id) => {
+		try {
+			const res = await axios.delete(
+				`/tour/delete-tour/${id}`,
+			);
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	},
+	updateTour: async ({ id, data }) => {
+		try {
+			console.log({ id })
+			console.log({ data })
+			const res = await axios.put(
+				`/tour/update-tour/${id}`,
+				data
+			);
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	},
 
 	booking: async (data) => {
 		try {
@@ -40,6 +63,17 @@ export const tourApi = {
 		try {
 			const res = await axios.get(
 				`tour/get-all-tour?q=${q}`,
+			);
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	},
+	add: async (data) => {
+		try {
+			const res = await axios.post(
+				`tour/add-tour`,
+				data
 			);
 			return res;
 		} catch (error) {

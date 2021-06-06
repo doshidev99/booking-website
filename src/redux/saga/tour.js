@@ -8,7 +8,10 @@ import {
 	getAllTourType,
 	getTourByIdType,
 	bookingType,
-	searchType
+	searchType,
+	delTourType,
+	updateTourType,
+	addTourType
 } from '../actionTypes';
 
 function* getAllAction(action) {
@@ -36,6 +39,33 @@ function* getTourByIdAction(action) {
 		yield put({ type: getTourByIdType.failed });
 	}
 }
+
+function* updateTourAction(action) {
+	try {
+		const { data } = yield tourApi.updateTour(action.payload);
+
+		if (data) {
+			yield put({ type: updateTourType.success, payload: data });
+		}
+	} catch (error) {
+		apiErrorHandler(error);
+		yield put({ type: updateTourType.failed });
+	}
+}
+
+function* delTourAction(action) {
+	try {
+		const { data } = yield tourApi.delTour(action.payload);
+
+		if (data) {
+			yield put({ type: delTourType.success, payload: data });
+		}
+	} catch (error) {
+		apiErrorHandler(error);
+		yield put({ type: delTourType.failed });
+	}
+}
+
 function* bookingAction(action) {
 	try {
 		const { data: { tourInCart } } = yield tourApi.booking(action.payload);
@@ -64,11 +94,30 @@ function* searchAction(action) {
 	}
 }
 
+function* addTourAction(action) {
+	try {
+		const { data: { data } } = yield tourApi.add(action.payload);
+
+		// eslint-disable-next-line no-console
+		console.log({ data }, '<----');
+		if (data) {
+			yield put({ type: addTourType.success, payload: data });
+		}
+
+	} catch (error) {
+		apiErrorHandler(error);
+		yield put({ type: addTourType.failed });
+	}
+}
+
 
 export default function* sagas() {
 	yield takeLeading(getAllTourType.request, getAllAction);
 	yield takeLeading(getTourByIdType.request, getTourByIdAction);
 	yield takeLeading(bookingType.request, bookingAction);
 	yield takeLeading(searchType.request, searchAction);
+	yield takeLeading(delTourType.request, delTourAction);
+	yield takeLeading(updateTourType.request, updateTourAction);
+	yield takeLeading(addTourType.request, addTourAction);
 
 }
