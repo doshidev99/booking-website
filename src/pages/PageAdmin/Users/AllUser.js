@@ -1,135 +1,197 @@
-import React, { Component } from 'react';
-import { Container, Table, Button } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Form, Container, Table, Spinner, Modal, Button } from 'react-bootstrap';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+
 import { AdminLayout } from '../../AdminLayout/AdminLayout';
-// import { actDeleteUserReq, actFetchAllTUserReq } from '../../../../actions/actUser';
 import './AllUser.scss';
+import { getAllUserType, delUserType, getUserByIdType, updateUserType } from '../../../redux/actionTypes'
+import { Spin } from 'antd';
 
-class PageAllUser extends Component {
-  constructor(props) {
-    super(props);
+const PageAllUser = () => {
+  const dispatch = useDispatch();
+  const [isToggle, setIsToggle] = useState(false);
+
+  const { userState: { listUsers = [], isRefresh, singleUsers },
+    loadingState: { loadingGetAllUser, loadingGetUserById } }
+    = useSelector(currentState => currentState)
+
+
+  useEffect(() => {
+    dispatch({ type: getAllUserType.request });
+  }, [dispatch, isRefresh])
+
+
+  const handleClose = () => {
+    setIsToggle(() => false)
   }
 
-  componentDidMount() {
-    this.props.fetchAllUser();
+  useEffect(() => {
+    if (isRefresh) {
+      handleClose();
+    }
+  }, [isRefresh])
+
+
+  const handleDelete = (id) => {
+    dispatch({ type: delUserType.request, payload: id });
   }
 
-    handleOnClickDeleteUser = (userID) => {
-      this.props.onDeleteUser(userID);
-    }
+  const handleShow = (_id) => {
+    if (!_id) return;
+    setIsToggle((cS) => !cS)
+    dispatch({ type: getUserByIdType.request, payload: _id });
+  }
 
-    // showListUser = (users) => {
-    //   let result = null;
-    //   if (users.length > 0) {
-    //     result = users.map((user, index) => {
-    //       if (user !== undefined) {
-    //         return (
-    //           <tr key={index}>
-    //             <td>{user.userName}</td>
-    //             <td>{user.password}</td>
-    //             <td>{user.email}</td>
-    //             <td>{user.numberPhoneUser}</td>
-    //             <td className="td-action">
-    //               <Button
-    //                 variant="danger"
-    //                 onClick={() => { this.handleOnClickDeleteUser(user._id); }}
-    //               >
-    //                 Del
-    //               </Button>
-    //               <Link to={`/admin/edit-user/${user._id}`}>
-    //                 <Button>
-    //                   Edit
-    //                 </Button>
-    //               </Link>
-    //             </td>
-    //           </tr>
-    //         );
-    //       }
-    //     });
-    //   }
-    //   return result;
-    // }
+  const onSubmit = (values) => {
+    dispatch({ type: updateUserType.request, payload: { id: singleUsers._id, data: values } });
+  };
 
-    render() {
-      const { users } = this.props;
-      return (
-        <AdminLayout>
-          <div className="pagealluser">
-          <Container>
-            <div className="table-all-user">
-              <legend>All User</legend>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>User Name</th>
-                    <th>Pass word</th>
-                    <th>Email</th>
-                    <th>Number Phone</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>January</td>
-                    <td>$100</td>
-                    <td>January</td>
-                    <td>$100</td>
-                    <td>
-                        <div className = "btnAction">
-                            <Link to = "/admin/edit-user">
-                                <button type="button" class="btn btn-primary">
-                                    <i class="fas fa-pencil-alt"></i>
+
+  return (
+    <AdminLayout>
+      <div className="pagealluser">
+        <Container>
+          <div className="table-all-user">
+            <legend>All User</legend>
+
+            <Modal show={isToggle} onHide={handleClose}>
+              <Modal.Header closeButton>
+                <Modal.Title>Update User</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+
+                {
+                  loadingGetUserById ? (
+                    <Spinner animation="border" variant="primary" />
+                  ) : (
+                    <Container>
+                      <Formik
+                        initialValues={singleUsers}
+                        validationSchema={
+                          Yup.object().shape({
+                            userName: Yup.string('Please enter your filed').required(),
+                            numberPhoneUser: Yup.string('Please enter your filed').required(),
+                            email: Yup.string('Please enter your filed').required(),
+                          })
+                        }
+                        onSubmit={(values) => onSubmit(values)}
+                      >
+                        {({
+                          errors, values, handleChange, handleSubmit,
+                        }) => (
+                          <Form className="form_" encType="multipart/form-data" onSubmit={handleSubmit}>
+                            <Form.Group controlId="formBasicEmail">
+                              <Form.Group controlId="formBasicEmail">
+                                <Form.Control
+                                  type="text"
+                                  name="userName"
+                                  placeholder="user name"
+                                  defaultValue={values.userName}
+                                  onChange={handleChange}
+                                />
+                                <Form.Text className="text-muted">
+                                  {errors.userName}
+                                </Form.Text>
+                              </Form.Group>
+                              <Form.Group controlId="formBasicEmail">
+                                <Form.Control
+                                  type="text"
+                                  name="numberPhoneUser"
+                                  placeholder="Phone number"
+                                  defaultValue={values.numberPhoneUser}
+                                  onChange={handleChange}
+                                />
+                                <Form.Text className="text-muted">
+                                  {errors.numberPhoneUser}
+                                </Form.Text>
+                              </Form.Group>
+                              <Form.Group controlId="formBasicEmail">
+                                <Form.Control
+                                  type="text"
+                                  placeholder="email"
+                                  name="email"
+                                  defaultValue={values.email}
+                                  onChange={handleChange}
+                                />
+                                <Form.Text className="text-muted">
+                                  {errors.email}
+                                </Form.Text>
+                              </Form.Group>
+
+                              <Button variant="primary" type="submit">
+                                Update User
+                        </Button>
+                            </Form.Group>
+                          </Form>
+                        )}
+                      </Formik>
+                    </Container>
+                  )
+                }
+
+              </Modal.Body>
+            </Modal >
+
+
+            <Table striped bordered hover>
+              {
+                loadingGetAllUser ? (
+                  <Spin />
+                ) : (
+
+                  <>
+                    <thead>
+                      <tr>
+                        <th>User Name</th>
+                        <th>Pass word</th>
+                        <th>Email</th>
+                        <th>Number Phone</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        listUsers.map(item => (
+
+
+                          <tr>
+                            <td>{item.userName}</td>
+                            <td>{item.password}</td>
+                            <td>{item.email}</td>
+                            <td>{item.numberPhoneUser}</td>
+                            <td>
+                              <div className="btnAction">
+                                <button type="button" class="btn btn-primary"
+                                  onClick={() => handleShow(item._id)}
+                                >
+                                  <i className="fas fa-pencil-alt"></i>
                                 </button>
-                            </Link>
-                            <button type="button" class="btn btn-danger">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>January</td>
-                    <td>$100</td>
-                    <td>January</td>
-                    <td>$100</td>
-                    <td>
-                        <div className = "btnAction">
-                            <Link to = "/admin/edit-user">
-                                <button type="button" class="btn btn-primary">
-                                    <i class="fas fa-pencil-alt"></i>
+                                <button type="button" class="btn btn-danger"
+                                  onClick={() => handleDelete(item._id)}
+                                >
+                                  <i className="far fa-trash-alt"></i>
                                 </button>
-                            </Link>
-                            <button type="button" class="btn btn-danger">
-                                <i class="far fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </td>
-                  </tr>
-                </tbody>
-                {/* <tbody>
-                  { this.showListUser(users) }
-                </tbody> */}
-              </Table>
-            </div>
-          </Container>
-        </div>
-        </AdminLayout>
-      );
-    }
+                              </div>
+                            </td>
+                          </tr>
+                        ))
+                      }
+                    </tbody>
+
+                  </>
+                )
+              }
+            </Table>
+          </div>
+        </Container>
+      </div>
+    </AdminLayout>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  users: state.user,
-});
 
-const mapDisPatchToProps = (dispatch, props) => ({
-  fetchAllUser: () => {
-    // dispatch(actFetchAllTUserReq());
-  },
-  onDeleteUser: (userID) => {
-    // dispatch(actDeleteUserReq(userID));
-  },
-});
-
-export default connect(mapStateToProps, mapDisPatchToProps)(PageAllUser);
+export default PageAllUser

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Form, Row } from 'react-bootstrap';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link, NavLink } from 'react-router-dom';
 import SwiperCore, { A11y, Autoplay, Navigation, Pagination, Scrollbar } from 'swiper';
 import 'swiper/components/navigation/navigation.scss';
@@ -8,6 +8,7 @@ import 'swiper/components/pagination/pagination.scss';
 import 'swiper/components/scrollbar/scrollbar.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper.scss';
+import { getMeType, searchType } from '../../redux/actionTypes';
 import './header.scss';
 
 
@@ -20,6 +21,13 @@ const Header = () => {
   const dispatch = useDispatch();
   const [state, setState] = useState({ keyword: '', statusDropdown: false })
 
+  const { profileState: { profile }, loadingState: { loadingGetMe }, authState: { token } } = useSelector(currentState => currentState)
+
+
+  useEffect(() => {
+    dispatch({ type: getMeType.request })
+  }, [dispatch])
+
 
   const handleOnChangeInput = (e) => {
     setState({
@@ -28,13 +36,16 @@ const Header = () => {
   }
 
   const onClickSearch = () => {
+    dispatch({ type: searchType.request, payload: state.keyword })
   }
+
   const onSubmit = (e) => {
     e.preventDefault();
+    dispatch({ type: searchType.request, payload: state.keyword })
   }
 
   const showMenu = () => {
-    if (false) {
+    if (!token) {
       return (
         <Link to="/login" className="dropdown-item has-icon text-danger">
           <i className="fas fa-sign-out-alt" />
@@ -54,7 +65,7 @@ const Header = () => {
   }
 
   const showUserIsLogin = () => {
-    if (false) {
+    if (!token) {
       return (
         <>
           Hi
@@ -70,7 +81,7 @@ const Header = () => {
           className="rounded-circle mr-1" /> */}
         <div className="d-sm-none d-lg-inline-block">
           Hi,
-       
+       {profile.userName}
         </div>
       </>
     );
@@ -130,35 +141,42 @@ const Header = () => {
                         </li>
                         <li
                           className="dropdown"
-                          onClick={() => setState({ statusDropdown: !state.statusDropdown })}
+                          onClick={() => setState((cS) => ({ ...cS, statusDropdown: !cS.statusDropdown }))}
                         >
-                          <NavLink to="#" data-toggle="dropdown" className="navLink nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            {/* {showUserIsLogin(isLogin)} */}
-                          </NavLink>
-                          <div className={`dropdown-menu dropdown-menu-right ${state.statusDropdown ? 'd-block active' : 'none'}`}>
-                            <Link to="features-profile.html" className="dropdown-item has-icon">
-                              <i className="far fa-user" />
-                              {' '}
+                          <div className="navLink nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            {showUserIsLogin()}
+                          </div>
+                          {
+                            state.statusDropdown && (
+                              <div className='dropdown-menu dropdown-menu-right d-block mt-5'
+
+                                style={{ position: 'absolute', top: 0 }}
+                              >
+                                <Link to="#" className="dropdown-item has-icon">
+                                  <i className="far fa-user" />
+                                  {' '}
                                 Profile
                               </Link>
-                            <Link to="/my-cart" className="dropdown-item has-icon">
-                              <i className="fas fa-shopping-bag" />
-                              {' '}
+                                <Link to="/my-cart" className="dropdown-item has-icon">
+                                  <i className="fas fa-shopping-bag" />
+                                  {' '}
                                 My Tours
                               </Link>
-                            <Link to="#" className="dropdown-item has-icon">
-                              <i className="fas fa-bolt" />
-                              {' '}
+                                <Link to="#" className="dropdown-item has-icon">
+                                  <i className="fas fa-bolt" />
+                                  {' '}
                                 Activities
                               </Link>
-                            <Link to="features-settings.html" className="dropdown-item has-icon">
-                              <i className="fas fa-cog" />
-                              {' '}
+                                <Link to="features-settings.html" className="dropdown-item has-icon">
+                                  <i className="fas fa-cog" />
+                                  {' '}
                                 Settings
                               </Link>
-                            <div className="dropdown-divider" />
-                            {/* {showMenu(isLogin)} */}
-                          </div>
+                                <div className="dropdown-divider" />
+                                {showMenu()}
+                              </div>
+                            )
+                          }
                         </li>
                       </ul>
                     </div>

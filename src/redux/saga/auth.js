@@ -8,27 +8,41 @@ import { apiErrorHandler } from '../../utils';
 
 
 import {
-	loginType
+	loginType,
+	registerType
 } from '../actionTypes';
 
 function* loginAction(action) {
 	try {
-		const { data } = yield authApi.login(action.payload);
+		const { data: { code, accessToken } } = yield authApi.login(action.payload);
 
-		// eslint-disable-next-line no-console
-		console.log(data, '<--data--');
-		// if (token) {
-		// 	localStorage.setItem('token', token)
-		// 	yield put({ type: loginType.success, payload: token });
-		// }
+		if (code === 200) {
+			localStorage.setItem('token', accessToken)
+			yield put({ type: loginType.success, payload: accessToken });
+		}
 	} catch (error) {
 		apiErrorHandler(error);
 		yield put({ type: loginType.failed });
 	}
 }
 
+function* registerAction(action) {
+	try {
+		const { data } = yield authApi.register(action.payload);
+
+		if (data.data) {
+			yield put({ type: registerType.success, payload: data.data });
+
+		}
+	} catch (error) {
+		apiErrorHandler(error);
+		yield put({ type: registerType.failed });
+	}
+}
+
 
 export default function* sagas() {
 	yield takeLeading(loginType.request, loginAction);
+	yield takeLeading(registerType.request, registerAction);
 
 }

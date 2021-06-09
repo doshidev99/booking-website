@@ -1,7 +1,8 @@
 import axios from 'axios';
 
+axios.defaults.headers.common = { 'Authorization': `bearer ${localStorage.getItem('token')}` }
 const axiosClient = axios.create({
-	baseURL: 'localhost:9000/api/',
+	baseURL: 'http://localhost:9000/api',
 	validateStatus: (status) => status >= 200 && status < 400,
 });
 
