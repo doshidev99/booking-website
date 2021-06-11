@@ -98,8 +98,6 @@ function* addTourAction(action) {
 	try {
 		const { data: { data } } = yield tourApi.add(action.payload);
 
-		// eslint-disable-next-line no-console
-		console.log({ data }, '<----');
 		if (data) {
 			yield put({ type: addTourType.success, payload: data });
 		}

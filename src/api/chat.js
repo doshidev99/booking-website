@@ -2,11 +2,10 @@ import axios from '../servives';
 
 // eslint-disable-next-line
 export const chatApi = {
-	getAllChatRoom: async (data) => {
+	getAllChatRoom: async () => {
 		try {
 			const res = await axios.get(
 				'/chat/get-all-chatroom',
-				data,
 			);
 			return res;
 		} catch (error) {
@@ -27,9 +26,34 @@ export const chatApi = {
 
 	addMessage: async (data) => {
 		try {
+
 			const res = await axios.post(
 				`/chat/add-message`,
 				data
+			);
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+
+	addChatRoom: async (data) => {
+		try {
+			const res = await axios.post(
+				`/chat/create-chatroom`,
+				data
+			);
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+	getAllMess: async () => {
+		try {
+			const res = await axios.get(
+				`/chat/get-all-message`,
 			);
 			return res;
 		} catch (error) {

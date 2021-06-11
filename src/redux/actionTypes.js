@@ -25,3 +25,17 @@ export const getUserByIdType = createActionTypes('GET_USER_BY_ID');
 export const updateUserType = createActionTypes('UPDATE_USER');
 export const delUserType = createActionTypes('DEL_USER');
 
+
+export const getAllEmployeeType = createActionTypes('GET_ALL_EMPLOYEE');
+export const addEmployeeType = createActionTypes('ADD_EMPLOYEE');
+export const getEmployeeByIdType = createActionTypes('GET_EMPLOYEE_BY_ID');
+export const updateEmployeeType = createActionTypes('UPDATE_EMPLOYEE');
+export const delEmployeeType = createActionTypes('DEL_EMPLOYEE');
+
+export const getAllChatType = createActionTypes('GET_ALL_CHAT');
+export const getChatRoomByIdType = createActionTypes('GET_CHAT_ROOM_BY_ID');
+export const getAllMessageType = createActionTypes('GET_ALL_MESSAGE_TYPE');
+export const addChatRoomType = createActionTypes('ADD_CHAT_ROOM');
+export const addMessageType = createActionTypes('ADD_MESSAGE');
+export const addTempType = createActionTypes('ADD_TEMP');
+export const onSocketType = createActionTypes('ON_SOCKET');

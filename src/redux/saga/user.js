@@ -17,8 +17,6 @@ function* getAllAction() {
 	try {
 		const { data } = yield userApi.getAll();
 
-		// eslint-disable-next-line no-console
-		console.log({ data }, '<----');
 		if (data) {
 			yield put({ type: getAllUserType.success, payload: data });
 		}
@@ -47,8 +45,6 @@ function* updateUserAction(action) {
 	try {
 		const { data } = yield userApi.updateUser(action.payload);
 
-		// eslint-disable-next-line no-console
-		console.log(data, '<--updateUserAction--');
 		if (data) {
 			yield put({ type: updateUserType.success, payload: data });
 		}
@@ -62,8 +58,6 @@ function* updateUserAction(action) {
 function* delUserAction(action) {
 	try {
 		const { data } = yield userApi.delUser(action.payload);
-		// eslint-disable-next-line no-console
-		console.log({ data }, '<----');
 		if (data) {
 			yield put({ type: delUserType.success, payload: data });
 		}

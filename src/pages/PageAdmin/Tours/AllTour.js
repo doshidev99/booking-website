@@ -49,13 +49,10 @@ const PageAllTour = props => {
     }
 
     const onSubmit = (values) => {
-        console.log('abc')
         dispatch({ type: updateTourType.request, payload: { id: singleTours._id, data: values } });
     };
 
 
-    // eslint-disable-next-line no-console
-    console.log(singleTours, '<----');
     if (loadingGetAllTour) return <Spin />;
 
     return (

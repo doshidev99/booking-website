@@ -52,6 +52,7 @@ function App() {
           <Route exact path="/admin/edit-employee" component={PageEditEmployee} />
           
           <Route exact path="/admin/chat" component={Chat} />
+          <Route exact path="/admin/chat/:id" component={Chat} />
 
           <Route component={NotFoundPage} />
 
