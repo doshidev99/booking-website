@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import socketIOClient from "socket.io-client";
 import { onSocket } from '../../../redux/actions/temp';
-import { addChatRoomType, addMessageType, getAllMessageType, getChatRoomById, getMeType } from '../../../redux/actionTypes';
+import { addChatRoomType, addMessageType, getAllMessageType, getChatRoomById, getChatRoomByIdType, getMeType } from '../../../redux/actionTypes';
 import './chat-client.scss';
 import InputMessage from './InputMessage';
 
@@ -38,16 +38,10 @@ const ChatDetail = () => {
 	} = useSelector(currentState => currentState);
 
 	const { profileState: { profile },
-		chatState: { listMessages, listMessTemp }
+		chatState: { listMessages, listMessTemp, messages }
 	} = useSelector(currentState => currentState);
 
 	const currentUserId = profile._id
-
-	useEffect(() => {
-		if (currentUserId) {
-			// dispatch({ type: getChatRoomById.request, payload: currentUserId });
-		}
-	}, [dispatch, currentUserId]);
 
 	// eslint-disable-next-line no-console
 	const handleConnect = () => {
@@ -57,6 +51,12 @@ const ChatDetail = () => {
 			}
 		})
 	}
+
+	useEffect(() => {
+		if (currentUserId) {
+			dispatch({ type: getChatRoomByIdType.request, payload: currentUserId });
+		}
+	}, [dispatch])
 
 	useEffect(() => {
 		socket.on('newMessage-server-sent', (payload) => {
@@ -82,7 +82,6 @@ const ChatDetail = () => {
 
 	}
 
-	const _messages = listMessages?.messages
 
 	return (
 		<>
@@ -94,7 +93,7 @@ const ChatDetail = () => {
 						{/* chat body */}
 						<div id="chat_box_body" className="chat-box-body">
 							{
-								_messages && Object.keys(_messages).length && _messages.map((mess) => {
+								messages && Object.keys(messages).length && messages.map((mess) => {
 									const { content, userID: { _id } } = mess
 
 										// eslint-disable-next-line no-console

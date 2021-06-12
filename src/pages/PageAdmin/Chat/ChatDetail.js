@@ -51,7 +51,6 @@ const ChatDetail = ({ id }) => {
 		}
 
 		socket.emit("newMessage-client-sent", payload)
-		dispatch({ type: addMessageType.request, payload })
 		dispatch(onSocket(payload))
 	}
 
