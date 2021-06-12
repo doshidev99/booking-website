@@ -39,3 +39,6 @@ export const addChatRoomType = createActionTypes('ADD_CHAT_ROOM');
 export const addMessageType = createActionTypes('ADD_MESSAGE');
 export const addTempType = createActionTypes('ADD_TEMP');
 export const onSocketType = createActionTypes('ON_SOCKET');
+export const getChatRoomById = createActionTypes('GET_CHAT_ROOM_BY_ID');
+
+

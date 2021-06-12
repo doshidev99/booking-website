@@ -10,7 +10,8 @@ import {
 	getChatRoomByIdType,
 	getAllMessageType,
 	addMessageType,
-	addChatRoomType
+	addChatRoomType,
+	getChatRoomById
 } from '../actionTypes';
 
 function* getAllAction() {
@@ -32,7 +33,7 @@ function* getByIdAction(action) {
 			yield put({ type: getChatRoomByIdType.success, payload: data });
 		}
 	} catch (error) {
-		apiErrorHandler(error);
+		// apiErrorHandler(error);
 		yield put({ type: getChatRoomByIdType.failed });
 	}
 }
@@ -72,6 +73,18 @@ function* addChatRoomAction(action) {
 		yield put({ type: addChatRoomType.failed });
 	}
 }
+function* getChatRoomByIdAction(action) {
+	try {
+		const { data } = yield chatApi.getChatRoomById(action.payload);
+		// eslint-disable-next-line no-console
+		if (data) {
+			yield put({ type: getChatRoomById.success, payload: data });
+		}
+	} catch (error) {
+		apiErrorHandler(error);
+		yield put({ type: getChatRoomById.failed });
+	}
+}
 
 export default function* sagas() {
 	yield takeLeading(getAllChatType.request, getAllAction);
@@ -79,4 +92,5 @@ export default function* sagas() {
 	yield takeLeading(getAllMessageType.request, getAllMessAction);
 	yield takeLeading(addMessageType.request, addMessAction);
 	yield takeLeading(addChatRoomType.request, addChatRoomAction);
+	yield takeLeading(getChatRoomById.request, getChatRoomByIdAction);
 }

@@ -3,7 +3,8 @@ import {
 	addChatRoomType,
 	getAllChatType,
 	addTempType,
-	onSocketType
+	onSocketType,
+	getChatRoomByIdType
 } from '../actionTypes';
 
 import { Toastify } from '../../utils/toast'
@@ -12,7 +13,8 @@ const initialState = {
 	listMessages: {},
 	isRefresh: null,
 	listConversation: [],
-	listMessTemp: []
+	listMessTemp: [],
+	messages: []
 }
 
 const chatRoom = (state = initialState, action) => {
@@ -26,6 +28,11 @@ const chatRoom = (state = initialState, action) => {
 			return {
 				...state,
 				listConversation: action.payload
+			}
+		case getChatRoomByIdType.success:
+			return {
+				...state,
+				messages: action.payload
 			}
 
 		case addChatRoomType.success:

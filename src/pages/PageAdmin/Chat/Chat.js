@@ -7,9 +7,6 @@ import { AdminLayout } from '../../AdminLayout/AdminLayout';
 import "./Chat.scss";
 import ChatDetail from './ChatDetail';
 
-
-
-
 const Chat = () => {
     const dispatch = useDispatch();
 
@@ -24,9 +21,6 @@ const Chat = () => {
         dispatch({ type: getAllChatType.request })
     }, [dispatch])
 
-
-      // eslint-disable-next-line no-console
-    console.log(listConversation, '<-listConversation---');
 
     return (
         <AdminLayout>
@@ -45,7 +39,7 @@ const Chat = () => {
                     <div className="conversation-area">
                         {
                             listConversation.map((e) =>
-                                <Link to={`/admin/chat/${e.userID.chatRoomID}`} className="msg online">
+                                <Link to={`/admin/chat/${e.userID._id}`} key={e._id} className="msg online">
                                     <img className="msg-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
                                     <div className="msg-detail">
                                         <div className="msg-username">{e.userID.userName}</div>
@@ -60,7 +54,11 @@ const Chat = () => {
                         }
 
                     </div>
-                    <ChatDetail id={id} />
+                    {
+                        id && (
+                            <ChatDetail id={id} />
+                        )
+                    }
                 </div>
             </div>
         </AdminLayout>

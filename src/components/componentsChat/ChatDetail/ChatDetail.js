@@ -1,13 +1,13 @@
-import React, { useEffect, useState, useLayoutEffect, memo } from 'react';
+import React, { memo, useEffect, useLayoutEffect } from 'react';
+import { Button } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import socketIOClient from "socket.io-client";
-
+import { onSocket } from '../../../redux/actions/temp';
+import { addChatRoomType, addMessageType, getAllMessageType, getChatRoomById, getMeType } from '../../../redux/actionTypes';
 import './chat-client.scss';
-import { Button, Spinner } from 'react-bootstrap';
-
-import { getAllMessageType, addChatRoomType, getMeType, addMessageType } from '../../../redux/actionTypes'
-import { addMessTempSuccess, onSocket } from '../../../redux/actions/temp'
 import InputMessage from './InputMessage';
+
+
 
 const ENDPOINT = 'http://localhost:9000';
 const socket = socketIOClient(ENDPOINT);
@@ -43,6 +43,11 @@ const ChatDetail = () => {
 
 	const currentUserId = profile._id
 
+	useEffect(() => {
+		if (currentUserId) {
+			// dispatch({ type: getChatRoomById.request, payload: currentUserId });
+		}
+	}, [dispatch, currentUserId]);
 
 	// eslint-disable-next-line no-console
 	const handleConnect = () => {
@@ -56,22 +61,21 @@ const ChatDetail = () => {
 	useEffect(() => {
 		socket.on('newMessage-server-sent', (payload) => {
 			const _id = payload.data.userID;
-			console.log(payload, '<--payload client--');
-
-			if (currentUserId && currentUserId !== _id) {
+				// eslint-disable-next-line no-console
+			console.log(currentUserId, '<---currentUserId-');
+			console.log(_id, '<---_id-');
+			// if (currentUserId && currentUserId !== _id) {
 				dispatch(onSocket(payload.data))
-			}
+			// }
 		})
 	}, [dispatch])
 
 	const handleButtonSendMessage = (messageInput) => {
 		const payload = {
 			userID: currentUserId,
-			content: messageInput,
-			chatroomID: profile.chatRoomID
+			message: messageInput,
 		}
 		socket.emit("newMessage-client-sent", payload)
-		dispatch({ type: addMessageType.request, payload: payload })
 		dispatch(onSocket(payload))
 
 		scrollTopBottom(20);
@@ -83,15 +87,19 @@ const ChatDetail = () => {
 	return (
 		<>
 			{
-				!profile.chatRoomID && token ? (
+				false ? (
 					<Button onClick={handleConnect} variant="secondary" className="text-dark fs-18">Chat now</Button>
 				) : (
 					<>
 						{/* chat body */}
 						<div id="chat_box_body" className="chat-box-body">
 							{
-								_messages && Object.keys(_messages) && _messages.map((mess) => {
+								_messages && Object.keys(_messages).length && _messages.map((mess) => {
 									const { content, userID: { _id } } = mess
+
+										// eslint-disable-next-line no-console
+									console.log(mess, '<----');
+
 									return (
 										<div key={mess._id} style={{ paddingBottom: 6 }}>
 											{
@@ -133,8 +141,8 @@ const ChatDetail = () => {
 
 
 							{
-								listMessTemp && Object.keys(listMessTemp) && listMessTemp.map((mess) => {
-									const { content, userID: _id } = mess
+								listMessTemp && Object.keys(listMessTemp).length && listMessTemp.map((mess) => {
+									const { message, userID: _id } = mess
 									return (
 										<div key={mess._id} style={{ paddingBottom: 6 }}>
 											{
@@ -147,19 +155,19 @@ const ChatDetail = () => {
 																background: 'lightblue',
 																display: 'inline',
 															}}
-														> {content} </div>
+														> {message} </div>
 													</div>
 												) : (
 													<div className="admin-mess text-right px-2 mb-3 text-right">
 														<div className="profile other-profile">
 
 														</div>
-														<div className="message other-message box-chat-admin text-white p-2"
+														<div className="message other-message box-chat-admin text-danger p-2"
 															style={{
 																background: 'gray',
 																display: 'inline'
 															}}
-														>{content}</div>
+														>{message}</div>
 													</div>
 												)
 											}
@@ -176,7 +184,7 @@ const ChatDetail = () => {
 						<div id="typing">
 							<div>
 								<span className="n">Someone</span> is typing...
-              </div>
+							</div>
 						</div>
 						<div className="chat-box-footer">
 							<InputMessage

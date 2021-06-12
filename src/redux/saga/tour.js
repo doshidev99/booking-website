@@ -22,7 +22,7 @@ function* getAllAction(action) {
 			yield put({ type: getAllTourType.success, payload: data });
 		}
 	} catch (error) {
-		apiErrorHandler(error);
+		// apiErrorHandler(error);
 		yield put({ type: getAllTourType.failed });
 	}
 }
@@ -35,7 +35,7 @@ function* getTourByIdAction(action) {
 			yield put({ type: getTourByIdType.success, payload: data });
 		}
 	} catch (error) {
-		apiErrorHandler(error);
+		// apiErrorHandler(error);
 		yield put({ type: getTourByIdType.failed });
 	}
 }
@@ -103,7 +103,7 @@ function* addTourAction(action) {
 		}
 
 	} catch (error) {
-		apiErrorHandler(error);
+		// apiErrorHandler(error);
 		yield put({ type: addTourType.failed });
 	}
 }

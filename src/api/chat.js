@@ -62,4 +62,16 @@ export const chatApi = {
 	},
 
 
+	getChatRoomById: async (id) => {
+		try {
+			const res = await axios.get(
+				`/chat/get-chatroom/${id}`,
+			);
+			return res;
+
+		} catch (error) {
+			throw error;
+		}
+	}
+
 };
