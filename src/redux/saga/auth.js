@@ -3,6 +3,7 @@ import {
 	takeLeading
 } from 'redux-saga/effects';
 import { authApi } from '../../api/auth';
+import { getMeApi } from '../../api/getMe';
 import { apiErrorHandler } from '../../utils';
 import {
 	loginType,
@@ -13,15 +14,13 @@ import {
 
 function* loginAction(action) {
 	try {
-		const { data: { code, accessToken } } = yield authApi.login(action.payload);
+		const { data: { code, accessToken, user } } = yield authApi.login(action.payload);
 
 		if (code === 200) {
 			localStorage.setItem('token', accessToken)
-			yield put({ type: loginType.success, payload: accessToken });
-			
-			const flag = localStorage.getItem('token');
-			if(flag) {
-				action.history.push('/');
+			yield put({ type: loginType.success, payload: accessToken, user });
+			if (accessToken) {
+				yield getMeApi.getMe(action.payload);
 			}
 		}
 	} catch (error) {
@@ -32,15 +31,8 @@ function* loginAction(action) {
 
 function* registerAction(action) {
 	try {
-			// eslint-disable-next-line no-console
 		const { data } = yield authApi.register(action.payload);
-
-			// eslint-disable-next-line no-console
-		console.log(data, '<----');
 		if (data.data) {
-
-				// eslint-disable-next-line no-console
-			console.log('aa', '<----');
 			yield put({ type: registerType.success, payload: data.data });
 			action.history.push('/login')
 

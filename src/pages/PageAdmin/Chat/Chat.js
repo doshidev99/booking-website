@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getAllChatType } from '../../../redux/actionTypes';
 import { AdminLayout } from '../../AdminLayout/AdminLayout';
 import "./Chat.scss";
@@ -12,14 +12,18 @@ const Chat = () => {
 
     const { id } = useParams();
 
-    const { profileState: { profile },
-        chatState: { listMessages, listConversation }
-    } = useSelector(currentState => currentState);
+    const { search } = useLocation();
+
+    const chatRoomId = search.split('q=')[1];
 
 
     useEffect(() => {
         dispatch({ type: getAllChatType.request })
     }, [dispatch])
+
+    const {
+        chatState: { listConversation }
+    } = useSelector(currentState => currentState);
 
 
     return (
@@ -38,25 +42,35 @@ const Chat = () => {
                 <div className="wrapper">
                     <div className="conversation-area">
                         {
-                            listConversation.map((e) =>
-                                <Link to={`/admin/chat/${e.userID._id}`} key={e._id} className="msg online">
-                                    <img className="msg-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
-                                    <div className="msg-detail">
-                                        <div className="msg-username">{e.userID.userName}</div>
-                                        <div className="msg-content">
-                                            <span className="msg-message">hello</span>
-                                            <span className="msg-date">20m</span>
-                                        </div>
-                                    </div>
-                                </Link>
+                            !listConversation.length ? (
+                                <div className="msg-detail">
+                                    Waiting new conversation
+                                </div>
+                            ) : (
+                                <>
+                                    {
+                                        listConversation.map((e) =>
+                                            <Link to={`/admin/chat/${e.userID._id}?q=${e._id}`} key={e._id} className="msg online">
+                                                <img className="msg-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
+                                                <div className="msg-detail">
+                                                    <div className="msg-username">{e.userID.userName}</div>
+                                                    <div className="msg-content">
+                                                        <span className="msg-message">hello</span>
+                                                        <span className="msg-date">20m</span>
+                                                    </div>
+                                                </div>
+                                            </Link>
+
+                                        )
+                                    }
+                                </>
 
                             )
                         }
-
                     </div>
                     {
                         id && (
-                            <ChatDetail id={id} />
+                            <ChatDetail id={id} chatroomId={chatRoomId} />
                         )
                     }
                 </div>

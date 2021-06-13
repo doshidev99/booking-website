@@ -1,103 +1,113 @@
-import React, { useEffect, useState, memo } from 'react';
-import socketIOClient from "socket.io-client";
-import { useDispatch, useSelector } from 'react-redux';
-
-import { AdminLayout } from '../../AdminLayout/AdminLayout';
-import { getAllMessageType, addChatRoomType, getMeType, addMessageType, getAllChatType, getChatRoomByIdType } from '../../../redux/actionTypes'
-import { addMessTempSuccess, onSocket } from '../../../redux/actions/temp'
-
-import "./Chat.scss";
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
-import InputMessage from '../../../components/componentsChat/ChatDetail/InputMessage';
 import { Spin } from 'antd';
+import React, { useEffect, useLayoutEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import socketIOClient from "socket.io-client";
+import InputMessage from '../../../components/componentsChat/ChatDetail/InputMessage';
+import { onSocket } from '../../../redux/actions/temp';
+import { getChatRoomById, getMeType } from '../../../redux/actionTypes';
+import "./Chat.scss";
+
+
 const ENDPOINT = 'http://localhost:9000';
 const socket = socketIOClient(ENDPOINT);
 
-const ChatDetail = ({ id }) => {
+const ChatDetail = ({ id, chatroomId }) => {
 	const dispatch = useDispatch();
-
-	const { profileState: { profile },
-		chatState: { listMessages, listMessTemp, messages },
-		loadingState: { loadingGetChatRoomById }
-	} = useSelector(currentState => currentState);
-
-	const currentUserId = profile._id
 
 	useEffect(() => {
 		dispatch({ type: getMeType.request });
 	}, [dispatch]);
 
+	const { profileState: { profile },
+		chatState: { listMessTemp, clientMessages },
+		loadingState: { loadingGetChatRoomById }
+	} = useSelector(currentState => currentState);
 
-	useEffect(() => {
+	const currentAdminId = profile._id
+
+	useLayoutEffect(() => {
 		if (id) {
-			dispatch({ type: getChatRoomByIdType.request, payload: id });
+			dispatch({ type: getChatRoomById.request, payload: id });
 		}
-	}, [dispatch])
+	}, [id, dispatch])
 
 	useEffect(() => {
-		socket.on('newMessage-server-sent', (payload) => {
-			const _id = payload.data.userID;
-			// if (currentUserId && currentUserId !== _id) {
+		const listener = (payload) => {
+			if (payload.data.role === 1) {
 				dispatch(onSocket(payload.data))
-			// }
-		})
-	}, [dispatch])
+			}
+		};
+		socket.on('newMessage-server-sent', listener)
 
-	const handleButtonSendMessage = (valueInput) => {
+		return () => socket.off('newMessage-server-sent', listener);
+	}, [ dispatch])
+
+	const handleButtonSendMessage = (messageInput) => {
 		const payload = {
-			userID: currentUserId,
-			message: valueInput,
+			userID: id,
+			adminId: currentAdminId,
+			message: messageInput,
+			chatroomId,
+			role: 0,
 		}
 
 		socket.emit("newMessage-client-sent", payload)
 		dispatch(onSocket(payload))
 	}
 
-	// eslint-disable-next-line no-console
+
 	if (!id) return <div>Loading ...</div>
 
 	if (loadingGetChatRoomById) return <Spin />
+
+	const flag = Object.keys(clientMessages).length > 0 ? true : false
+
+
+	// eslint-disable-next-line no-console
+	console.log(listMessTemp, '<----');
 	return (
 		<div className="wrapper">
 			<div className="chat-area">
 				<div className="chat-area-header">
 					<div className="chat-area-title">
 						<img class="msg-profile" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3364143/download+%281%29.png" alt="" />
-						Name of client
+						{flag && clientMessages.userID.userName}
 					</div>
 				</div>
 
 				<div>
 					{
-						messages && Object.keys(messages).length && messages.message.map((mess) => {
 
-							const { content, userID: { _id } } = mess
+						flag &&
+						clientMessages && clientMessages?.message.map((mess) => {
+							const { content, userID } = mess
+
+							console.log(mess, '<--mess😙--');
 							return (
 
 								<div key={mess._id} style={{ marginBottom: 18 }}>
-									{
-										currentUserId !== _id ? (
-											<div className="text-left" >
-												<div className="message my-message p-2 mb-2"
-													style={{
-														background: 'lightblue',
-														display: 'inline',
-													}}
-												> {content} </div>
-											</div>
-										) : (
-											<div className="text-right"
-											>
-												<div className="message my-message p-2 mb-2"
-													style={{
-														background: 'gray',
-														display: 'inline',
-														color: 'white'
-													}}
-												> {content} </div>
-											</div>
-										)
+									{userID &&
+										currentAdminId !== userID ? (
+										<div className="text-left" >
+											<div className="message my-message p-2 mb-2"
+												style={{
+													background: 'lightblue',
+													display: 'inline',
+												}}
+											> {content} </div>
+										</div>
+									) : (
+										<div className="text-right"
+										>
+											<div className="message my-message p-2 mb-2"
+												style={{
+													background: 'gray',
+													display: 'inline',
+													color: 'white'
+												}}
+											> {content} </div>
+										</div>
+									)
 									}
 
 
@@ -107,14 +117,16 @@ const ChatDetail = ({ id }) => {
 						)
 					}
 					{
-						listMessTemp && Object.keys(listMessTemp).length && listMessTemp.map((mess) => {
+						currentAdminId &&
+						listMessTemp && listMessTemp.map((mess) => {
 
-							const { message, userID: _id } = mess
+							const { message, role } = mess;
+
 							return (
 
 								<div key={mess._id} style={{ marginBottom: 18 }}>
 									{
-										currentUserId !== _id ? (
+										role === 1 ? (
 											<div className="text-left" >
 												<div className="message my-message p-2 mb-2"
 													style={{

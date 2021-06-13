@@ -27,17 +27,18 @@ SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 const HomePage = () => {
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        dispatch({ type: getAllTourType.request });
+      }, [dispatch])
+
+      
     const {
         loadingState: { loadingGetAllTour, loadingSearch },
-        tourState: { tours },
         authState: { token }
     } = useSelector((currentState) => currentState);
 
-    useEffect(() => {
-        if (token) {
-            dispatch({ type: getChatRoomById.request });
-        }
-    }, [dispatch, token]);
+    const { tourState: { tours }, } = useSelector(currentState => currentState)
+
 
     const renderSlide = () => (
         <Swiper
@@ -68,7 +69,7 @@ const HomePage = () => {
                         <SwiperSlide className="swiperSlide" key={idx}>
                             <div className="destination-item">
                                 <div className="img-destination-item">
-                                    <NavLink to={`/detail-tour/${item._id}`}>
+                                    <NavLink to={`/all-tour/${item._id}`}>
                                         {/* <img src={`${USER_IMG}/${item.avatar}`} alt="" /> */}
                                         <img
                                             src="https://picsum.photos/200"
@@ -91,59 +92,55 @@ const HomePage = () => {
         return result;
     };
 
-    const renderAllTour = () => {
+    const showAllTours = () => {
         let result = null;
-        if (tours.length) {
-            result = tours.map((tour, index) => {
-                if (tour !== undefined) {
-                    return (
-                        // eslint-disable-next-line react/no-array-index-key
-                        <Col key={index} lg={4}>
-                            <div className="our-tour-item">
-                                <div className="img-tour-item">
-                                    <NavLink
-                                        className="navLink"
-                                        to={`/detail-tour/${tour._id}`}
-                                    >
-                                        {/* <img src={`${USER_IMG}/${tour.avatar}`} alt="" /> */}
-                                        <img
-                                            src="https://picsum.photos/200"
-                                            alt=""
-                                        />
-                                    </NavLink>
-                                </div>
-                                <div className="name-tour">
-                                    <NavLink to={`/detail-tour/${tour._id}`}>
-                                        <legend>{tour.tourName}</legend>
-                                    </NavLink>
-                                </div>
-                                <div className="time-price-our-tour">
-                                    <Row>
-                                        <Col lg={7}>
-                                            <div className="qty-people">
-                                                <span>{`Remain : ${tour.qtyPeople}`}</span>
-                                            </div>
-                                        </Col>
-                                        <Col lg={5}>
-                                            <div className="price-tour">
-                                                <fieldset>
-                                                    {tour.priceTour}
-                                                    <span>₫/person</span>
-                                                </fieldset>
-                                            </div>
-                                        </Col>
-                                    </Row>
-                                </div>
+        if (tours.length > 0) {
+          result = tours.map((tour, index) => {
+            if (tour !== undefined) {
+              return (
+                <Col lg={4} key={index}>
+                  <div className="our-tour-item">
+                    <div className="img-tour-item">
+                      <NavLink className="navLink" to={`/all-tour/${tour._id}`}>
+                        {/* <img src={`${TOUR_IMG}/${tour.avatarTour}`} alt="" /> */}
+                        <img src='https://picsum.photos/200' alt="" />
+    
+                      </NavLink>
+                    </div>
+                    <div className="name-tour">
+                      <NavLink to={`/all-tour/${tour._id}`}>
+                        <legend>{tour.tourName}</legend>
+                      </NavLink>
+                    </div>
+                    <div className="time-price-our-tour">
+                      <Row>
+                        <Col lg={7}>
+                          <div className="time-tour">
+                            <div className="icon-time">
+                              <img src="../../../img/icon-time.svg" alt="" />
                             </div>
+                            <fieldset>5 Days / 4 Nights</fieldset>
+                          </div>
                         </Col>
-                    );
-                }
-            });
-        } else {
-            result = <AppNotFound />;
+                        <Col lg={5}>
+                          <div className="price-tour">
+                            <fieldset>
+                              {tour.priceTour}
+                              <span>₫/person</span>
+                            </fieldset>
+                          </div>
+                        </Col>
+                      </Row>
+                    </div>
+                  </div>
+                </Col>
+              );
+            }
+          });
         }
         return result;
-    };
+      }
+    
 
     if (loadingGetAllTour && !token) return <Spin />;
 
@@ -161,7 +158,7 @@ const HomePage = () => {
                                 <Row>
                                     {loadingSearch && <Spin />}
 
-                                    {renderAllTour()}
+                                    {showAllTours()}
                                 </Row>
                             </div>
                         </div>

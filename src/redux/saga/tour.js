@@ -32,7 +32,7 @@ function* getTourByIdAction(action) {
 		const { data } = yield tourApi.getDetail(action.payload);
 
 		if (data) {
-			yield put({ type: getTourByIdType.success, payload: data });
+			yield put({ type: getTourByIdType.success, payload: data.data });
 		}
 	} catch (error) {
 		// apiErrorHandler(error);

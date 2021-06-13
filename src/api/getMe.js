@@ -6,7 +6,7 @@ export const getMeApi = {
 	getMe: async () => {
 		try {
 			const res = await axios.get(
-				'/user/get-me',
+				'/user/get-me'
 			);
 			return res;
 		} catch (error) {
