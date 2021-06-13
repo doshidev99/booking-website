@@ -61,8 +61,7 @@ const PrivateRoute = props => {
 			<Route exact path="/admin/chat" component={Chat} />
 			<Route exact path="/admin/chat/:id" component={Chat} />
 
-			<Route exact path="/admin/chat" component={Chat} />
-			<Route path="/" component={HomePage} />
+			<Route exact path="/" component={HomePage} />
 
 		</div>
 	);

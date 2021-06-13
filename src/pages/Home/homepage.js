@@ -21,6 +21,7 @@ import './homepage.scss';
 
 import { getAllTourType, getChatRoomById } from '../../redux/actionTypes';
 import { Spin } from 'antd';
+import { TOUR_IMG } from '../../utils';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
@@ -70,11 +71,8 @@ const HomePage = () => {
                             <div className="destination-item">
                                 <div className="img-destination-item">
                                     <NavLink to={`/all-tour/${item._id}`}>
-                                        {/* <img src={`${USER_IMG}/${item.avatar}`} alt="" /> */}
-                                        <img
-                                            src="https://picsum.photos/200"
-                                            alt=""
-                                        />
+                                        <img src={`${TOUR_IMG}/${item.avatar}`} alt="" />
+                                        
                                     </NavLink>
                                 </div>
                                 <div className="title-destination-item">
@@ -102,9 +100,7 @@ const HomePage = () => {
                   <div className="our-tour-item">
                     <div className="img-tour-item">
                       <NavLink className="navLink" to={`/all-tour/${tour._id}`}>
-                        {/* <img src={`${TOUR_IMG}/${tour.avatarTour}`} alt="" /> */}
-                        <img src='https://picsum.photos/200' alt="" />
-    
+                        <img src={`${TOUR_IMG}/${tour.avatarTour}`} alt="" />
                       </NavLink>
                     </div>
                     <div className="name-tour">
@@ -182,7 +178,6 @@ const HomePage = () => {
                                 >
                                     <SwiperSlide>
                                         <div className="img-slide-travel-tip">
-                                            {/* <img src={`../../../public/img/t${index + 1}.jpeg`} alt="" /> */}
                                             <img
                                                 src="https://picsum.photos/200
 "

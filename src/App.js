@@ -31,7 +31,7 @@ function App() {
                                 <Route path="/login" exact component={LoginPage} />
                             </>
                         ) : (
-                            <Route path="/" name="Home" component={PrivateRoute} />
+                            <Route path="/"  component={PrivateRoute} />
                         )
                     }
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState, useCallback, useRef } from 'react';
 import { Form, Button, Container, Table, Spinner, Modal } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { AdminLayout } from "../../AdminLayout/AdminLayout"
@@ -16,7 +16,8 @@ import { Spin } from 'antd';
 const PageAllTour = props => {
     const dispatch = useDispatch();
 
-
+    const [file, setFile] = useState(null)
+    const fileInput = useRef();
     const [isToggle, setIsToggle] = useState(false);
     const { tourState: { tours = [], isRefresh, singleTours },
         loadingState: { loadingGetAllTour, loadingGetTourById } } = useSelector(currentState => currentState)
@@ -31,6 +32,13 @@ const PageAllTour = props => {
             handleClose();
         }
     }, [isRefresh])
+
+
+
+    const onChangeFile = () => {
+        let fileZero = fileInput.current.files[0];
+        setFile(() => (fileZero))
+    }
 
 
     const handleDeleteTour = (_id) => {
@@ -49,7 +57,20 @@ const PageAllTour = props => {
     }
 
     const onSubmit = (values) => {
-        dispatch({ type: updateTourType.request, payload: { id: singleTours._id, data: values } });
+        const newData = new FormData();
+        newData.append('avatar', file);
+        newData.append('tourID', values.tourID);
+        newData.append('tourName', values.tourName);
+        newData.append('startAddress', values.startAddress);
+        newData.append('endAddress', values.endAddress);
+        newData.append('startDate', values.startDate);
+        newData.append('endDate', values.endDate);
+        newData.append('priceTour', values.priceTour);
+        newData.append('qtyPeople', values.qtyPeople);
+        newData.append('descriptionTour', values.descriptionTour);
+        newData.append('detailTour', values.detailTour);
+
+        dispatch({ type: updateTourType.request, payload: { id: singleTours._id, data: newData } });
     };
 
 
@@ -184,9 +205,22 @@ const PageAllTour = props => {
                                                         {errors.detailTour}
                                                     </Form.Text>
                                                 </Form.Group>
+                                                <Form.Group className="form-group-input-file" controlId="formBasicEmail">
+                                                    <input
+                                                        type="file"
+                                                        name="avatarTour"
+                                                        ref={fileInput}
+                                                        onChange={onChangeFile}
+                                                    />
+                                                    <br />
+                                                    <div className="img_tour">
+                                                        <img id="imgTour" src="" alt="" />
+                                                    </div>
+                                                    <Form.Text className="text-muted" />
+                                                </Form.Group>
                                                 <Button variant="primary" type="submit">
                                                     Update Tour
-                        </Button>
+                                                </Button>
                                             </Form>
                                         )}
                                     </Formik>
