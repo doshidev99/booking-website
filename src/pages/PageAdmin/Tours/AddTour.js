@@ -229,16 +229,4 @@ const PageAddTour = () => {
   )
 }
 
-//       Toastify({ msg: 'Phiên giao dịch đã tồn tại', type: 'error' });
-
-
-
-// const mapDispatchToProps = (dispatch, props) => ({
-//   onAddTour: (tour) => {
-//     dispatch(actAddTourReq(tour));
-//   },
-// });
-
-// export default connect(null, mapDispatchToProps)(PageAddTour)
-
 export default PageAddTour

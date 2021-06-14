@@ -19,8 +19,10 @@ function* loginAction(action) {
 		if (code === 200) {
 			localStorage.setItem('token', accessToken)
 			yield put({ type: loginType.success, payload: accessToken, user });
-			if (accessToken) {
-				yield getMeApi.getMe(action.payload);
+			const flag = localStorage.getItem('token');
+			if (flag) {
+				// action.history.push('/')
+				window.location.href = 'http://localhost:3000/'
 			}
 		}
 	} catch (error) {

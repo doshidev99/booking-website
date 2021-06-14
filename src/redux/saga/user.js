@@ -33,6 +33,7 @@ function* addUserAction(action) {
 
 		if (data) {
 			yield put({ type: addUserType.success, payload: data });
+			action.history.push('/admin/all-user')
 		}
 	} catch (error) {
 		apiErrorHandler(error);

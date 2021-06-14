@@ -43,7 +43,7 @@ const ChatDetail = () => {
 		loadingState: { loadingGetChatRoomById, loadingGetMe }
 	} = useSelector(currentState => currentState);
 
-	const currentUserId = authProfile._id || profile._id
+	const currentUserId = authProfile?._id || profile?._id
 
 	const handleConnect = () => {
 		dispatch({
@@ -54,10 +54,10 @@ const ChatDetail = () => {
 	}
 
 	useLayoutEffect(() => {
-		if (currentUserId) {
+		if (token && currentUserId) {
 			dispatch({ type: getChatRoomById.request, payload: currentUserId });
 		}
-	}, [currentUserId, dispatch])
+	}, [currentUserId, token, dispatch])
 
 	useEffect(() => {
 		const listener = (payload) => {
@@ -86,55 +86,62 @@ const ChatDetail = () => {
 	if (loadingGetChatRoomById) return <Spin />
 	const flag = Object.keys(clientMessages).length > 0 ? true : false
 
-	// if (loadingGetMe) return <Spin />
+	if (loadingGetMe) return <Spin />
 	return (
 
 		<>
 			{/* chat body */}
 			<div id="chat_box_body" className="chat-box-body">
-
 				{
-					flag
-					&& clientMessages && clientMessages?.message?.map((mess) => {
-						const { content, userID } = mess
-						return (
-							<div key={mess._id} style={{ paddingBottom: 6 }}>
-								{
-									currentUserId !== userID ? (
-										<div className="client-mess profile my-profile px-2 mt-2 text-left" >
-											<div className="">
-											</div>
-											<div className="message my-message p-2 mb-2"
-												style={{
-													background: 'lightblue',
-													display: 'inline',
-												}}
-											> {content} </div>
-										</div>
-									) : (
-										<div className="admin-mess text-right px-2 mb-3 text-right">
-											<div className="profile other-profile">
-												{/* <img src="https://i.pravatar.cc/30"
+					false ? (
+						<Button > Connect Chat</Button>
+					) : (
+						<>
+							{
+								flag
+								&& clientMessages && clientMessages?.message?.map((mess) => {
+									const { content, userID } = mess
+									return (
+										<div key={mess._id} style={{ paddingBottom: 6 }}>
+											{
+												currentUserId !== userID ? (
+													<div className="client-mess profile my-profile px-2 mt-2 text-left" >
+														<div className="">
+														</div>
+														<div className="message my-message p-2 mb-2"
+															style={{
+																background: 'lightblue',
+																display: 'inline',
+															}}
+														> {content} </div>
+													</div>
+												) : (
+													<div className="admin-mess text-right px-2 mb-3 text-right">
+														<div className="profile other-profile">
+															{/* <img src="https://i.pravatar.cc/30"
                           style={{ borderRadius: '50%' }}
                           width="30" height="30" alt="" />
                         <span>Admin</span> */}
-											</div>
-											<div className="message other-message box-chat-admin text-white p-2"
-												style={{
-													background: 'gray',
-													display: 'inline'
-												}}
-											>{content}</div>
+														</div>
+														<div className="message other-message box-chat-admin text-white p-2"
+															style={{
+																background: 'gray',
+																display: 'inline'
+															}}
+														>{content}</div>
+													</div>
+												)
+											}
+
+
 										</div>
 									)
-								}
+								})
+							}
 
-
-							</div>
-						)
-					})
+						</>
+					)
 				}
-
 
 				{
 					listMessTemp && listMessTemp.map((mess) => {

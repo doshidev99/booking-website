@@ -16,7 +16,6 @@ function* getMeAction(action) {
 			yield put({ type: getMeType.success, payload: data });
 		}
 	} catch (error) {
-		apiErrorHandler(error);
 		yield put({ type: getMeType.failed });
 	}
 }

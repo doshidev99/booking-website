@@ -66,6 +66,9 @@ export const chatApi = {
 		try {
 			const res = await axios.get(
 				`/chat/get-chatroom/${id}`,
+				{
+					Authorization: `bearer ${localStorage.getItem('token')}`
+				}
 			);
 			return res;
 
