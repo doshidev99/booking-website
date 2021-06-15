@@ -21,6 +21,7 @@ import './homepage.scss';
 
 import {getAllTourType} from '../../redux/actionTypes';
 import {Spin} from 'antd';
+import {TOUR_IMG} from '../../constant/service.js';
 
 SwiperCore.use([Navigation, Pagination, Scrollbar, A11y, Autoplay]);
 
@@ -66,9 +67,8 @@ const HomePage = () => {
                             <div className="destination-item">
                                 <div className="img-destination-item">
                                     <NavLink to={`/detail-tour/${item._id}`}>
-                                        {/* <img src={`${USER_IMG}/${item.avatar}`} alt="" /> */}
                                         <img
-                                            src="https://picsum.photos/200"
+                                            src={`${TOUR_IMG}/${item.avatar}`}
                                             alt=""
                                         />
                                     </NavLink>
@@ -102,9 +102,8 @@ const HomePage = () => {
                                         className="navLink"
                                         to={`/detail-tour/${tour._id}`}
                                     >
-                                        {/* <img src={`${USER_IMG}/${tour.avatar}`} alt="" /> */}
                                         <img
-                                            src="https://picsum.photos/200"
+                                            src={`${TOUR_IMG}/${tour.avatar}`}
                                             alt=""
                                         />
                                     </NavLink>
@@ -150,6 +149,13 @@ const HomePage = () => {
                 {/* <Header/> */}
                 <div className="homePage">
                     <Container>
+                        <div className="top-destination">
+                            <legend>Top Destination</legend>
+                            <div className="list-destination">
+                                {renderSlide()}
+                            </div>
+                        </div>
+
                         <div className="our-tour">
                             <div className="title-our-tour">
                                 <legend>Our Tours</legend>
@@ -160,13 +166,6 @@ const HomePage = () => {
 
                                     {renderAllTour()}
                                 </Row>
-                            </div>
-                        </div>
-
-                        <div className="top-destination">
-                            <legend>Top Destination</legend>
-                            <div className="list-destination">
-                                {renderSlide()}
                             </div>
                         </div>
 
@@ -181,15 +180,13 @@ const HomePage = () => {
                                     scrollbar={{draggable: true}}
                                 >
                                     <SwiperSlide>
-                                        <div className="img-slide-travel-tip">
-                                            {/* <img src={`../../../public/img/t${index + 1}.jpeg`} alt="" /> */}
-                                            <img
-                                                src="https://picsum.photos/200
-"
-                                                alt=""
-                                            />
+                                        <div className="img-tip-travel">
+                                            {/* <img src="../../" > */}
                                         </div>
                                     </SwiperSlide>
+                                    <SwiperSlide>Slide 2</SwiperSlide>
+                                    <SwiperSlide>Slide 3</SwiperSlide>
+                                    <SwiperSlide>Slide 4</SwiperSlide>
                                 </Swiper>
                             </div>
                         </div>
