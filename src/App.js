@@ -1,19 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSelector } from 'react-redux';
-import {
-    BrowserRouter as Router, Route,
-    Switch
-} from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import NotFoundPage from './pages/404';
 import LoginPage from './pages/Login';
 import PrivateRoute from './route/private';
 import PageRegister from './pages/Register';
-import { history } from './redux/store';
-
+import {history} from './redux/store';
 
 import AllTourPage from './pages/AllTourPage';
-import PageDashBoard from './pages/Dashboard';
+import PageDashBoard from './pages/dashboard/index';
 import DetailPage from './pages/DetailPage';
 import Chat from './pages/PageAdmin/Chat/Chat';
 import PageAddEmployee from './pages/PageAdmin/Employee/AddEmployee';
@@ -30,11 +26,11 @@ import AdminLogin from './pages/AdminLogin';
 
 function App() {
     const {
-        authState: { token },
+        authState: {token},
     } = useSelector((currentState) => currentState);
 
     if (!token) {
-        history.push('/login')
+        history.push('/login');
     }
     return (
         <div className="App">
@@ -45,7 +41,11 @@ function App() {
                     {/* <Route path="/admin/login" exact component={AdminLogin} /> */}
 
                     <Route path="/all-tour" exact component={AllTourPage} />
-                    <Route path="/all-tour/:tourID" exact component={DetailPage} />
+                    <Route
+                        path="/detail-tour/:tourID"
+                        exact
+                        component={DetailPage}
+                    />
 
                     <Route
                         exact
@@ -67,9 +67,21 @@ function App() {
                         component={PageEditUser}
                     />
 
-                    <Route exact path="/admin/all-employee" component={PageAllEmployee} />
-                    <Route exact path="/admin/add-employee" component={PageAddEmployee} />
-                    <Route exact path="/admin/edit-employee" component={PageEditEmployee} />
+                    <Route
+                        exact
+                        path="/admin/all-employee"
+                        component={PageAllEmployee}
+                    />
+                    <Route
+                        exact
+                        path="/admin/add-employee"
+                        component={PageAddEmployee}
+                    />
+                    <Route
+                        exact
+                        path="/admin/edit-employee"
+                        component={PageEditEmployee}
+                    />
 
                     <Route exact path="/admin/chat" component={Chat} />
                     <Route exact path="/admin/chat/:id" component={Chat} />

@@ -1,14 +1,14 @@
 @import '../../assets/scss/variable';
 @import '../../assets/scss/style.scss';
 @import '../../assets/scss/components.scss';
-.homePage{
+.homePage {
     width: 100%;
     height: auto;
     padding: 0 0 50px 0;
-    .top-destination{
+    .top-destination {
         width: 100%;
         height: auto;
-        legend{
+        legend {
             font-family: $font_family;
             font-style: normal;
             font-weight: normal;
@@ -17,37 +17,37 @@
             color: #000000;
             text-shadow: 5px -5px 0 #d5d5d5, 0px 0px 0px rgba(0, 0, 0, 0.2);
         }
-        .list-destination{
+        .list-destination {
             width: 100%;
             height: auto;
             padding: 0 0 30px 0;
-            .swiperSlide{
+            .swiperSlide {
                 width: 337px;
                 margin-right: 50px;
             }
-            .destination-item{
+            .destination-item {
                 width: 100%;
                 height: auto;
                 position: relative;
-                .img-destination-item{
-                    width: 348px;
+                .img-destination-item {
+                    width: 100%;
                     height: 250px;
-                    img{
+                    img {
                         height: 100%;
                         width: 100%;
                     }
                 }
-                .title-destination-item{
+                .title-destination-item {
                     width: 100%;
                     height: auto;
                     position: absolute;
                     bottom: 0;
                     left: 0;
-                    .title-item{
+                    .title-item {
                         width: 90%;
                         height: auto;
                         background-color: #d5d5d5;
-                        p{
+                        p {
                             padding: 10px;
                             font-family: $font_family;
                             font-style: normal;
@@ -57,13 +57,13 @@
                             color: #000000;
                         }
                     }
-                    .qty-tour{
+                    .qty-tour {
                         display: flex;
                         justify-content: flex-end;
                     }
                 }
             }
-            .destination-item-flex{
+            .destination-item-flex {
                 width: 65%;
                 height: auto;
                 display: flex;
@@ -71,9 +71,9 @@
             }
         }
     }
-    .our-tour{
-        .title-our-tour{
-            legend{
+    .our-tour {
+        .title-our-tour {
+            legend {
                 font-family: $font_family;
                 font-style: normal;
                 font-weight: normal;
@@ -83,63 +83,64 @@
                 text-shadow: 5px -5px 0 #d5d5d5, 0px 0px 0px rgba(0, 0, 0, 0.2);
             }
         }
-        .list-our-tour{
+        .list-our-tour {
             width: 100%;
             height: auto;
-            .our-tour-item{
+            .our-tour-item {
                 width: 100%;
                 height: auto;
                 overflow: hidden;
                 padding: 0 0 50px 0;
-                .img-tour-item{
-                    width: 370px;
+                .img-tour-item {
+                    width: 100%;
                     height: 310px;
-                    img{
+                    img {
                         // width: 100%;
                         height: 100%;
                     }
                 }
-                .name-tour{
+                .name-tour {
                     width: 100%;
                     height: auto;
                     a {
                         text-decoration: none;
                     }
-                    legend{
+                    legend {
                         font-family: $font_family;
                         font-style: normal;
                         font-weight: normal;
                         font-size: 22px;
                         line-height: 48px;
                         color: #000000;
+                        text-align: initial;
                     }
                 }
-                .time-price-our-tour{
+                .time-price-our-tour {
                     width: 100%;
                     height: auto;
-                    .time-tour{
+                    .time-tour {
                         width: 100%;
                         height: auto;
                         display: flex;
                         .navLink-time-tour {
                             text-decoration: none;
-                            fieldset{
-                                &:hover{
-                                    color: #FFC600;
+                            fieldset {
+                                &:hover {
+                                    color: #ffc600;
                                 }
                             }
                         }
-                        .icon-time{
+                        .icon-time {
                             width: 18px;
                             height: 18px;
                             // img{
                             //     width: 100%;
                             // }
-                            i{
+                            i {
                                 padding-left: 10px;
                             }
                         }
-                        fieldset{
+                        fieldset {
                             padding: 0 0 0 5px;
                             font-family: $font_family;
                             font-style: normal;
@@ -147,13 +148,12 @@
                             font-size: 13px;
                             line-height: 24px;
                             color: #666666;
-                            
                         }
                     }
-                    .price-tour{
+                    .price-tour {
                         width: 100%;
                         height: auto;
-                        fieldset{
+                        fieldset {
                             font-family: $font_family;
                             font-style: normal;
                             font-weight: normal;
@@ -162,7 +162,7 @@
                             color: #000000;
                             display: flex;
                             justify-content: flex-end;
-                            span{
+                            span {
                                 padding-left: 5px;
                                 font-size: 12px;
                             }
@@ -172,11 +172,11 @@
             }
         }
     }
-    .travel-tip{
+    .travel-tip {
         width: 100%;
         height: auto;
-        .title-travel-trip{
-            legend{
+        .title-travel-trip {
+            legend {
                 font-family: $font_family;
                 font-style: normal;
                 font-weight: normal;
@@ -186,10 +186,10 @@
                 text-shadow: 5px -5px 0 #d5d5d5, 0px 0px 0px rgba(0, 0, 0, 0.2);
             }
         }
-        .img-travel-tip{
+        .img-travel-tip {
             width: 100%;
             height: auto;
-            img{
+            img {
                 width: 100%;
             }
         }
