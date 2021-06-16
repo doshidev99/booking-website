@@ -108,7 +108,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-header-1.jpg"
+                                            src="../../../img/bg-h-1.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -116,7 +116,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-header-2.jpg"
+                                            src="../../../img/bg-h-2.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -124,7 +124,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-header-3.jpg"
+                                            src="../../../img/bg-h-3.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -132,7 +132,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-header-4.jpg"
+                                            src="../../../img/bg-h-4.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -140,7 +140,15 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-header-5.jpg"
+                                            src="../../../img/bg-h-5.jpg"
+                                            alt=""
+                                        />
+                                    </div>
+                                </SwiperSlide>
+                                <SwiperSlide>
+                                    <div className="img-slide-header">
+                                        <img
+                                            src="../../../img/bg-h-6.jpg"
                                             alt=""
                                         />
                                     </div>

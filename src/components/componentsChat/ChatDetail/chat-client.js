@@ -12,7 +12,7 @@ const ChatClient = () => {
     if (token) {
         return (
             <>
-                {/* <div className="flexbox">
+                <div className="flexbox">
                     <div className="chat-box">
                         <div className="chat-box-header">
                             <h3>
@@ -22,7 +22,7 @@ const ChatClient = () => {
                         </div>
                         <ChatDetail />
                     </div>
-                </div> */}
+                </div>
             </>
         );
     }

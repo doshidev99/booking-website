@@ -40,7 +40,7 @@ function App() {
 
                     <Route path="/all-tour" exact component={AllTourPage} />
                     <Route
-                        path="/all-tour/:tourID"
+                        path="/detail-tour/:tourID"
                         exact
                         component={DetailPage}
                     />

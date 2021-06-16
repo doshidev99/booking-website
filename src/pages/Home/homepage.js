@@ -71,11 +71,9 @@ const HomePage = () => {
                         <SwiperSlide className="swiperSlide" key={idx}>
                             <div className="destination-item">
                                 <div className="img-destination-item">
-                                    <NavLink to={`/all-tour/${item._id}`}>
-                                        {/* <img src={`${TOUR_IMG}/${item.avatar}`} alt="" /> */}
+                                    <NavLink to={`/detail-tour/${item._id}`}>
                                         <img
-                                            src="https://picsum.photos/200
-"
+                                            src={`${TOUR_IMG}/${item.avatar}`}
                                             alt=""
                                         />
                                     </NavLink>
@@ -106,13 +104,16 @@ const HomePage = () => {
                                 <div className="img-tour-item">
                                     <NavLink
                                         className="navLink"
-                                        to={`/all-tour/${tour._id}`}
+                                        to={`/detail-tour/${tour._id}`}
                                     >
-                                        {/* <img src={`${TOUR_IMG}/${tour.avatarTour}`} alt="" /> */}
+                                        <img
+                                            src={`${TOUR_IMG}/${tour.avatar}`}
+                                            alt=""
+                                        />
                                     </NavLink>
                                 </div>
                                 <div className="name-tour">
-                                    <NavLink to={`/all-tour/${tour._id}`}>
+                                    <NavLink to={`/detail-tour/${tour._id}`}>
                                         <legend>{tour.tourName}</legend>
                                     </NavLink>
                                 </div>
