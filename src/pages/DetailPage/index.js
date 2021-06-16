@@ -27,7 +27,6 @@ const DetailPage = () => {
     } = useSelector((cS) => cS);
 
     const showDetailTour = (tour) => {
-        console.log(tour, '[tour]');
         if (tour) {
             return (
                 <div className="detail-tour">

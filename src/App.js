@@ -22,6 +22,7 @@ import PageAddUser from './pages/PageAdmin/Users/AddUser';
 import PageAllUser from './pages/PageAdmin/Users/AllUser';
 import PageEditUser from './pages/PageAdmin/Users/EditUser';
 import HomePage from './pages/Home/homepage';
+import MyCart from './pages/cart/index';
 
 function App() {
     const {
@@ -35,6 +36,7 @@ function App() {
         <div className="App">
             <Router>
                 <Switch>
+                    <Route path="/my-cart" exact component={MyCart} />
                     <Route path="/register" exact component={PageRegister} />
                     <Route path="/login" exact component={LoginPage} />
 
