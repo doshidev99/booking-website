@@ -78,7 +78,7 @@ const ChatDetail = () => {
 			role: 1
 		}
 
-		socket.emit("newMessage-client-sent", payload)
+		socket.emit("newMessage-client-sent", payload); // 
 		dispatch(onSocket(payload))
 		scrollTopBottom(20);
 	}

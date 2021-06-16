@@ -10,7 +10,7 @@ import ChatDetail from './ChatDetail';
 const Chat = () => {
     const dispatch = useDispatch();
 
-    const { id } = useParams();
+    const { id = '' } = useParams();
 
     const { search } = useLocation();
 

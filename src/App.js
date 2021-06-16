@@ -26,6 +26,7 @@ import PageAddUser from './pages/PageAdmin/Users/AddUser';
 import PageAllUser from './pages/PageAdmin/Users/AllUser';
 import PageEditUser from './pages/PageAdmin/Users/EditUser';
 import HomePage from './pages/Home/homepage';
+import AdminLogin from './pages/AdminLogin';
 
 function App() {
     const {
@@ -39,9 +40,9 @@ function App() {
         <div className="App">
             <Router>
                 <Switch>
-
                     <Route path="/register" exact component={PageRegister} />
                     <Route path="/login" exact component={LoginPage} />
+                    {/* <Route path="/admin/login" exact component={AdminLogin} /> */}
 
                     <Route path="/all-tour" exact component={AllTourPage} />
                     <Route path="/all-tour/:tourID" exact component={DetailPage} />
@@ -72,10 +73,7 @@ function App() {
 
                     <Route exact path="/admin/chat" component={Chat} />
                     <Route exact path="/admin/chat/:id" component={Chat} />
-
                     <Route exact path="/" component={HomePage} />
-
-
                     <Route component={NotFoundPage} />
                 </Switch>
             </Router>

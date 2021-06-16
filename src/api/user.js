@@ -55,7 +55,8 @@ export const userApi = {
 
 
 	delUser: async (id) => {
-		try {
+			// eslint-disable-next-line no-console
+			try {
 			const res = await axios.delete(
 				`/user/delete-user/${id}`,
 			);

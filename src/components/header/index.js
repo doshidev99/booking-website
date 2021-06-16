@@ -81,7 +81,7 @@ const Header = () => {
           className="rounded-circle mr-1" /> */}
         <div className="d-sm-none d-lg-inline-block">
           Hi,
-       {profile.userName}
+          {profile.userName}
         </div>
       </>
     );
@@ -155,23 +155,23 @@ const Header = () => {
                                 <Link to="#" className="dropdown-item has-icon">
                                   <i className="far fa-user" />
                                   {' '}
-                                Profile
-                              </Link>
+                                  Profile
+                                </Link>
                                 <Link to="/my-cart" className="dropdown-item has-icon">
                                   <i className="fas fa-shopping-bag" />
                                   {' '}
-                                My Tours
-                              </Link>
+                                  My Tours
+                                </Link>
                                 <Link to="#" className="dropdown-item has-icon">
                                   <i className="fas fa-bolt" />
                                   {' '}
-                                Activities
-                              </Link>
+                                  Activities
+                                </Link>
                                 <Link to="features-settings.html" className="dropdown-item has-icon">
                                   <i className="fas fa-cog" />
                                   {' '}
-                                Settings
-                              </Link>
+                                  Settings
+                                </Link>
                                 <div className="dropdown-divider" />
                                 {showMenu()}
                               </div>

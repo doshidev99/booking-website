@@ -59,6 +59,9 @@ function* updateUserAction(action) {
 function* delUserAction(action) {
 	try {
 		const { data } = yield userApi.delUser(action.payload);
+
+			// eslint-disable-next-line no-console
+		console.log(action, '<---action-');
 		if (data) {
 			yield put({ type: delUserType.success, payload: data });
 		}
