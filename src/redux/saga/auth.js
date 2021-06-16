@@ -1,24 +1,29 @@
 import {
 	put,
-	takeLeading,
+	takeLeading
 } from 'redux-saga/effects';
-
 import { authApi } from '../../api/auth';
+import { getMeApi } from '../../api/getMe';
 import { apiErrorHandler } from '../../utils';
-
-
 import {
 	loginType,
 	registerType
 } from '../actionTypes';
 
+
+
 function* loginAction(action) {
 	try {
-		const { data: { code, accessToken } } = yield authApi.login(action.payload);
+		const { data: { code, accessToken, user } } = yield authApi.login(action.payload);
 
 		if (code === 200) {
 			localStorage.setItem('token', accessToken)
-			yield put({ type: loginType.success, payload: accessToken });
+			yield put({ type: loginType.success, payload: accessToken, user });
+			const flag = localStorage.getItem('token');
+			if (flag) {
+				// action.history.push('/')
+				window.location.href = 'http://localhost:3000/'
+			}
 		}
 	} catch (error) {
 		apiErrorHandler(error);
@@ -29,9 +34,9 @@ function* loginAction(action) {
 function* registerAction(action) {
 	try {
 		const { data } = yield authApi.register(action.payload);
-
 		if (data.data) {
 			yield put({ type: registerType.success, payload: data.data });
+			action.history.push('/login')
 
 		}
 	} catch (error) {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './NavBar.scss';
 
 class NavBar extends Component {
-  constructor(props) {
+  constructor (props) {
     super(props);
     this.state = {
       statusDropdown: false,
@@ -16,12 +16,12 @@ class NavBar extends Component {
     return (
       <div className="navbar">
         <div className="navbar-bg" />
-        <nav className="navbar navbar-expand-lg main-navbar" style = {{display : "flex", justifyContent : "space-between"}}>
+        <nav className="navbar navbar-expand-lg main-navbar" style={{ display: "flex", justifyContent: "space-between" }}>
           <form className="form-inline mr-auto">
             <ul className="navbar-nav mr-3">
               <li><Link to="#" data-toggle="search" className="nav-link nav-link-lg d-sm-none"><i className="fas fa-search" /></Link></li>
             </ul>
-            <div className="search-element" style = {{display : "flex"}}>
+            <div className="search-element" style={{ display: "flex" }}>
               <input className="form-control" type="search" placeholder="Search" aria-label="Search" data-width="250" />
               <button className="btn" type="submit"><i className="fas fa-search" /></button>
               <div className="search-backdrop" />
@@ -216,13 +216,13 @@ class NavBar extends Component {
               onClick={() => this.setState({ statusDropdown: !statusDropdown })}
             >
               <Link to="#" data-toggle="dropdown" className="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                  <img alt="image1" src="../../../../img/121241321_670001800616075_329923169218267049_o.jpg" className="rounded-circle mr-1" />
+                <img alt="image1" src="../../../../img/121241321_670001800616075_329923169218267049_o.jpg" className="rounded-circle mr-1" />
                 <div className="d-sm-none d-lg-inline-block">
                   Hi,
                   {/* {this.props.userIsLogging.dataUserLogin.user.userName} */}
                 </div>
               </Link>
-              <div className={`dropdown-menu dropdown-menu-right ${statusDropdown ? 'd-block active' : 'none'}`} style = {{right : "0", top : "40px"}}>
+              <div className={`dropdown-menu dropdown-menu-right ${statusDropdown ? 'd-block active' : 'none'}`} style={{ right: "0", top: "40px" }}>
                 <div className="dropdown-title">Logged in 5 min ago</div>
                 <Link to="features-profile.html" className="dropdown-item has-icon">
                   <i className="far fa-user" />
@@ -242,7 +242,6 @@ class NavBar extends Component {
                 <div className="dropdown-divider" />
                 <Link to="#" className="dropdown-item has-icon text-danger">
                   <i className="fas fa-sign-out-alt" />
-                  {' '}
                   Logout
                 </Link>
               </div>

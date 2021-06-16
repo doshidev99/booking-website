@@ -23,8 +23,12 @@ const DetailPage = () => {
 
   const { loadingState: { loadingGetTourById }, tourState: { singleTours } } = useSelector((cS) => cS)
 
+
   const showDetailTour = (tour) => {
     if (tour) {
+
+        // eslint-disable-next-line no-console
+      console.log(tour, '<-tour---');
       return (
         <div className="detail-tour">
           <div className="title-detail-tour">

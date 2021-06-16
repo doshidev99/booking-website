@@ -9,7 +9,7 @@ import 'antd/dist/antd.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-toastify/dist/ReactToastify.css';
 
-import store from './redux/store'
+import store, {history} from './redux/store'
 
 ReactDOM.render(
   <Provider store={store}>

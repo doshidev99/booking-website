@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Button, Form} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import {Spin, Space} from 'antd';
 
 import './pageLogin.scss';
@@ -12,6 +12,7 @@ const Login = () => {
     const dispatch = useDispatch();
     const [state, setState] = useState({});
 
+    const history = useHistory()
     const {
         loadingState: {loadingLogin},
     } = useSelector((currentState) => currentState);
@@ -21,7 +22,7 @@ const Login = () => {
 
     const onSubmit = (e) => {
         e.preventDefault();
-        dispatch({type: loginType.request, payload: state});
+        dispatch({type: loginType.request, payload: state, history});
     };
 
     if (loadingLogin) return <Spin />;

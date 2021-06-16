@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Form, Container, Table, Spinner, Modal, Button } from 'react-bootstrap';
 
 import { useDispatch, useSelector } from 'react-redux';
@@ -14,6 +14,8 @@ import { Spin } from 'antd';
 const PageAllUser = () => {
   const dispatch = useDispatch();
   const [isToggle, setIsToggle] = useState(false);
+  const [file, setFile] = useState(null)
+  const fileInput = useRef();
 
   const { userState: { listUsers = [], isRefresh, singleUsers },
     loadingState: { loadingGetAllUser, loadingGetUserById } }
@@ -46,8 +48,25 @@ const PageAllUser = () => {
     dispatch({ type: getUserByIdType.request, payload: _id });
   }
 
+  const onChangeFile = () => {
+    let fileZero = fileInput.current.files[0];
+    setFile(() => (fileZero))
+  }
+
+
+
   const onSubmit = (values) => {
-    dispatch({ type: updateUserType.request, payload: { id: singleUsers._id, data: values } });
+    const newData = new FormData();
+    newData.append('avatar', file);
+    newData.append('userName', values.userName);
+    newData.append('password', values.password);
+    newData.append('role', values.role);
+    newData.append('email', values.email);
+    newData.append('numberPhoneUser', values.numberPhoneUser);
+
+    dispatch({ type: updateUserType.request, payload: { id: singleUsers._id, data: newData } });
+    setIsToggle((cS) => !cS)
+
   };
 
 
@@ -121,10 +140,22 @@ const PageAllUser = () => {
                                   {errors.email}
                                 </Form.Text>
                               </Form.Group>
-
+                              <Form.Group className="form-group-input-file" controlId="formBasicEmail">
+                                <input
+                                  type="file"
+                                  name="avatarTour"
+                                  ref={fileInput}
+                                  onChange={onChangeFile}
+                                />
+                                <br />
+                                <div className="img_tour">
+                                  <img id="imgTour" src="" alt="" />
+                                </div>
+                                <Form.Text className="text-muted" />
+                              </Form.Group>
                               <Button variant="primary" type="submit">
                                 Update User
-                        </Button>
+                              </Button>
                             </Form.Group>
                           </Form>
                         )}
@@ -164,8 +195,8 @@ const PageAllUser = () => {
                             <td>{item.email}</td>
                             <td>{item.numberPhoneUser}</td>
                             <td>
-                              <div className="btnAction">
-                                <button type="button" class="btn btn-primary"
+                              <div className="btnAction d-flex justify-content-center">
+                                <button type="button" class="btn btn-primary mr-3"
                                   onClick={() => handleShow(item._id)}
                                 >
                                   <i className="fas fa-pencil-alt"></i>

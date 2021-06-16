@@ -14,6 +14,7 @@ const PageRegister = () => {
 
   const dispatch = useDispatch()
 
+
   const history = useHistory();
   const fileInput = useRef();
 
@@ -39,7 +40,7 @@ const PageRegister = () => {
     newData.append('email', state.email);
     newData.append('password', state.password);
 
-    dispatch({ type: registerType.request, payload: newData })
+    dispatch({ type: registerType.request, payload: newData, history })
   }
 
   return (

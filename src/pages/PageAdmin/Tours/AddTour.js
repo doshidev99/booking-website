@@ -13,10 +13,12 @@ import './AddTour.scss';
 import { AdminLayout } from '../../AdminLayout/AdminLayout';
 
 import { addTourType } from '../../../redux/actionTypes'
+import { useHistory } from 'react-router';
 
 const PageAddTour = () => {
   const dispatch = useDispatch()
 
+  const history = useHistory();
   const [state, setState] = useState()
   const [file, setFile] = useState(null)
   const fileInput = useRef();
@@ -226,17 +228,5 @@ const PageAddTour = () => {
 
   )
 }
-
-//       Toastify({ msg: 'Phiên giao dịch đã tồn tại', type: 'error' });
-
-
-
-// const mapDispatchToProps = (dispatch, props) => ({
-//   onAddTour: (tour) => {
-//     dispatch(actAddTourReq(tour));
-//   },
-// });
-
-// export default connect(null, mapDispatchToProps)(PageAddTour)
 
 export default PageAddTour

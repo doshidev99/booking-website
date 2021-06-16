@@ -38,7 +38,9 @@ export const userApi = {
 		}
 	},
 
-	updateUser: async ({ id, data }) => {
+		updateUser: async ({ id, data }) => {
+			console.log(data)
+			console.log(id, 'id')
 		try {
 			const res = await axios.put(
 				`/user/update-user/${id}`,

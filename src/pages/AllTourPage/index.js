@@ -28,14 +28,14 @@ const PageAllTour = () => {
             <Col lg={4} key={index}>
               <div className="our-tour-item">
                 <div className="img-tour-item">
-                  <NavLink className="navLink" to={`/detail-tour/${tour._id}`}>
+                  <NavLink className="navLink" to={`/all-tour/${tour._id}`}>
                     {/* <img src={`${TOUR_IMG}/${tour.avatarTour}`} alt="" /> */}
                     <img src='https://picsum.photos/200' alt="" />
 
                   </NavLink>
                 </div>
                 <div className="name-tour">
-                  <NavLink to={`/detail-tour/${tour._id}`}>
+                  <NavLink to={`/all-tour/${tour._id}`}>
                     <legend>{tour.tourName}</legend>
                   </NavLink>
                 </div>

@@ -2,8 +2,9 @@
 import { Toastify } from './toast'
 
 export const apiErrorHandler = (error) => {
-	let title = '';
-	let message = 'Something wrong';
 	Toastify({ msg: `${error.response.data.message}`, type: 'error' });
-
 };
+
+
+export const USER_IMG = 'http://localhost:9000/api/storages/users'
+export const TOUR_IMG = 'http://localhost:9000/api/storages/tours'

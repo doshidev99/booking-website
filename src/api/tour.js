@@ -36,8 +36,6 @@ export const tourApi = {
 	},
 	updateTour: async ({ id, data }) => {
 		try {
-			console.log({ id })
-			console.log({ data })
 			const res = await axios.put(
 				`/tour/update-tour/${id}`,
 				data

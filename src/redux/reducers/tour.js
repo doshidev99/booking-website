@@ -1,6 +1,5 @@
 import { getAllTourType, getTourByIdType, bookingType, searchType, delTourType, updateTourType, addTourType } from '../actionTypes'
 import { Toastify } from '../../utils/toast'
-import { history } from '../store';
 
 const initialState = {
 	tours: [],
