@@ -25,6 +25,8 @@ const ChatClient = () => {
                 </div>
             </>
         );
+    } else {
+        return null;
     }
 };
 

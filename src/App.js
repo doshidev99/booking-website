@@ -1,15 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import {useSelector} from 'react-redux';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import NotFoundPage from './pages/404';
 import LoginPage from './pages/Login';
 import PrivateRoute from './route/private';
 import PageRegister from './pages/Register';
-import {history} from './redux/store';
+import { history } from './redux/store';
 
 import AllTourPage from './pages/AllTourPage';
-import PageDashBoard from './pages/dashboard/index';
+import PageDashBoard from './pages/Dashboard/index';
 import DetailPage from './pages/DetailPage';
 import Chat from './pages/PageAdmin/Chat/Chat';
 import PageAddEmployee from './pages/PageAdmin/Employee/AddEmployee';
@@ -23,15 +23,18 @@ import PageAllUser from './pages/PageAdmin/Users/AllUser';
 import PageEditUser from './pages/PageAdmin/Users/EditUser';
 import HomePage from './pages/Home/homepage';
 import AdminLogin from './pages/AdminLogin';
+import PublicRoute from './route/Public';
 
 function App() {
-    const {
-        authState: {token},
-    } = useSelector((currentState) => currentState);
+    // const {
+    //     authState: { token },
+    // } = useSelector((currentState) => currentState);
 
-    if (!token) {
-        history.push('/login');
-    }
+    // if (!token) {
+    //     history.push('/login');
+    // }
+
+    
     return (
         <div className="App">
             <Router>
@@ -46,45 +49,50 @@ function App() {
                         exact
                         component={DetailPage}
                     />
-
                     <Route
+                        path="/all-tour/:tourID"
+                        exact
+                        component={DetailPage}
+                    />
+
+                    <PrivateRoute
                         exact
                         path="/admin/dashboard"
                         component={PageDashBoard}
                     />
-                    <Route path="/admin/all-tour" component={PageAllTour} />
-                    <Route path="/admin/add-tour" component={PageAddTour} />
-                    <Route path="/admin/edit-tour" component={PageEditTour} />
-                    <Route
+                    <PrivateRoute path="/admin/all-tour" component={PageAllTour} />
+                    <PrivateRoute path="/admin/add-tour" component={PageAddTour} />
+                    <PrivateRoute path="/admin/edit-tour" component={PageEditTour} />
+                    <PrivateRoute
                         exact
                         path="/admin/all-user"
                         component={PageAllUser}
                     />
-                    <Route path="/admin/add-user" component={PageAddUser} />
-                    <Route
+                    <PrivateRoute path="/admin/add-user" component={PageAddUser} />
+                    <PrivateRoute
                         exact
                         path="/admin/edit-user"
                         component={PageEditUser}
                     />
 
-                    <Route
+                    <PrivateRoute
                         exact
                         path="/admin/all-employee"
                         component={PageAllEmployee}
                     />
-                    <Route
+                    <PrivateRoute
                         exact
                         path="/admin/add-employee"
                         component={PageAddEmployee}
                     />
-                    <Route
+                    <PrivateRoute
                         exact
                         path="/admin/edit-employee"
                         component={PageEditEmployee}
                     />
 
-                    <Route exact path="/admin/chat" component={Chat} />
-                    <Route exact path="/admin/chat/:id" component={Chat} />
+                    <PrivateRoute exact path="/admin/chat" component={Chat} />
+                    <PrivateRoute exact path="/admin/chat/:id" component={Chat} />
                     <Route exact path="/" component={HomePage} />
                     <Route component={NotFoundPage} />
                 </Switch>

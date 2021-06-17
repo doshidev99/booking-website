@@ -26,16 +26,18 @@ const DetailPage = () => {
         tourState: {singleTours},
     } = useSelector((cS) => cS);
 
-    const showDetailTour = (tour) => {
-        console.log(tour, '[tour]');
-        if (tour) {
+
+      // eslint-disable-next-line no-console
+    console.log(singleTours, '<-singleTours---');
+    const showDetailTour = () => {
+        if (Object.keys(singleTours).length) {
             return (
                 <div className="detail-tour">
                     <div className="title-detail-tour">
-                        <legend>{tour.tourName}</legend>
+                        <legend>{singleTours.tourName}</legend>
                     </div>
                     <div className="img-detail-tour">
-                        <img src={`${TOUR_IMG}/${tour.avatar}`} alt="" />
+                        {/* <img src={`${TOUR_IMG}/${singleTours.avatar}`} alt="" /> */}
                     </div>
                     <div className="description-detail-tour">
                         <div className="description-detail">
@@ -43,7 +45,7 @@ const DetailPage = () => {
                                 <legend>Description</legend>
                             </div>
                             <div className="description-detail-zone">
-                                {tour.descriptionTour}
+                                {singleTours.descriptionTour}
                             </div>
                         </div>
                     </div>
@@ -53,7 +55,7 @@ const DetailPage = () => {
                                 <legend>Detail</legend>
                             </div>
                             <div className="description-detail-zone">
-                                {tour.detailTour}
+                                {singleTours.detailTour}
                             </div>
                         </div>
                     </div>
@@ -73,7 +75,7 @@ const DetailPage = () => {
             ) : (
                 <div className="detail-page">
                     <Container>
-                        {showDetailTour(singleTours)}
+                        {showDetailTour()}
                         <div className="btn-order-tour">
                             <Button variant="warning" onClick={onHandleAdd}>
                                 Add To Cart
