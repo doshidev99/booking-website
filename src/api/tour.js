@@ -52,11 +52,39 @@ export const tourApi = {
 				`/add-to-cart`,
 				data
 			);
+
 			return res;
 		} catch (error) {
 			throw error;
 		}
 	},
+
+	delCart: async (data) => {
+		try {
+			// user ID -  tour id
+			console.log(data)
+			const res = await axios.delete(
+				`/cart`,
+				{ data }
+			);
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	},
+
+
+	getCart: async (id = '') => {
+		try {
+			const res = await axios.get(
+				`/cart/${id}`,
+			);
+			return res;
+		} catch (error) {
+			throw error;
+		}
+	},
+
 	search: async (q) => {
 		try {
 			const res = await axios.get(

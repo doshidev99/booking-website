@@ -255,7 +255,7 @@ const PageAllTour = props => {
                                         <td>{tour.startAddress}</td>
                                         <td>{tour.startDate}</td>
                                         <td>{tour.endDate}</td>
-                                        <td>{tour.priceTour.toLocaleString('vi', { style: 'currency', currency: 'VND' })}</td>
+                                        <td>{tour?.priceTour?.toLocaleString('vi', { style: 'currency', currency: 'VND' }) || ''}</td>
                                         <td>{tour.qtyPeople}</td>
                                         <td className="td-action">
                                             <Button onClick={() => handleShow(tour._id)} >  Edit </Button>

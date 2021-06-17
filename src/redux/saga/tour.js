@@ -11,7 +11,10 @@ import {
 	searchType,
 	delTourType,
 	updateTourType,
-	addTourType
+	addTourType,
+	getAllBookingType,
+	deleteBookingType,
+	getAllBookingAdminType
 } from '../actionTypes';
 
 function* getAllAction(action) {
@@ -69,11 +72,9 @@ function* delTourAction(action) {
 function* bookingAction(action) {
 	try {
 
-			// eslint-disable-next-line no-console
-		console.log(action, '<-action---');
-		const { data: { tourInCart } } = yield tourApi.booking(action.payload);
+		const { data: { payload } } = yield tourApi.booking(action.payload);
 
-		if (tourInCart) {
+		if (payload) {
 			yield put({ type: bookingType.success });
 		}
 
@@ -111,6 +112,44 @@ function* addTourAction(action) {
 	}
 }
 
+function* getAllBookingAction(action) {
+	try {
+		const { data: { payload } } = yield tourApi.getCart(action.payload);
+
+		if (payload) {
+			yield put({ type: getAllBookingType.success, payload: payload.tourInCart });
+		}
+
+	} catch (error) {
+		// apiErrorHandler(error);
+		yield put({ type: getAllBookingType.failed });
+	}
+}
+function* deleteBookingAction(action) {
+	try {
+		const { data: { payload } } = yield tourApi.delCart(action.payload);
+		if (payload) {
+			yield put({ type: deleteBookingType.success, payload });
+		}
+
+	} catch (error) {
+		// apiErrorHandler(error);
+		yield put({ type: deleteBookingType.failed });
+	}
+}
+function* getAllBookingAdminAction(action) {
+	try {
+		const { data } = yield tourApi.getCart();
+		if (data) {
+			yield put({ type: getAllBookingAdminType.success, payload: data });
+		}
+
+	} catch (error) {
+		// apiErrorHandler(error);
+		yield put({ type: getAllBookingAdminType.failed });
+	}
+}
+
 
 export default function* sagas() {
 	yield takeLeading(getAllTourType.request, getAllAction);
@@ -120,5 +159,8 @@ export default function* sagas() {
 	yield takeLeading(delTourType.request, delTourAction);
 	yield takeLeading(updateTourType.request, updateTourAction);
 	yield takeLeading(addTourType.request, addTourAction);
+	yield takeLeading(getAllBookingType.request, getAllBookingAction);
+	yield takeLeading(getAllBookingAdminType.request, getAllBookingAdminAction);
+	yield takeLeading(deleteBookingType.request, deleteBookingAction);
 
 }

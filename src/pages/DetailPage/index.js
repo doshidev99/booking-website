@@ -26,6 +26,7 @@ const DetailPage = () => {
     const {
         loadingState: { loadingGetTourById },
         tourState: { singleTours },
+        profileState
     } = useSelector((cS) => cS);
 
 
@@ -59,6 +60,12 @@ const DetailPage = () => {
                             </div>
                         </div>
                     </div>
+
+                    <div className="btn-order-tour">
+                        <Button variant="warning" onClick={onHandleAdd}>
+                            Add To Cart
+                        </Button>
+                    </div>
                 </div>
             );
         }
@@ -67,7 +74,13 @@ const DetailPage = () => {
     const onHandleAdd = () => {
         const token = localStorage.getItem('token')
         if (token) {
-            dispatch({ type: bookingType.request, payload: singleTours });
+            const payload = {
+                userID: profileState.profile._id,
+                tourID,
+                QtyPeople: singleTours.qtyPeople,
+                QtyPrice: singleTours.priceTour
+            }
+            dispatch({ type: bookingType.request, payload });
         } else {
             history.push('/login')
         }
@@ -81,11 +94,7 @@ const DetailPage = () => {
                 <div className="detail-page">
                     <Container>
                         {showDetailTour()}
-                        <div className="btn-order-tour">
-                            <Button variant="warning" onClick={onHandleAdd}>
-                                Add To Cart
-                            </Button>
-                        </div>
+
                     </Container>
                 </div>
             )}

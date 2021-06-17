@@ -1,10 +1,15 @@
-import { getAllTourType, getTourByIdType, bookingType, searchType, delTourType, updateTourType, addTourType } from '../actionTypes'
+import {
+	getAllTourType, getTourByIdType, getAllBookingAdminType, bookingType, searchType, delTourType, updateTourType, addTourType, getAllBookingType,
+	deleteBookingType
+} from '../actionTypes'
 import { Toastify } from '../../utils/toast'
 
 const initialState = {
 	tours: [],
 	singleTours: {},
-	isRefresh: null
+	isRefresh: null,
+	carts: [],
+	listCarts: []
 }
 
 const chatRoom = (state = initialState, action) => {
@@ -21,11 +26,31 @@ const chatRoom = (state = initialState, action) => {
 				...state,
 				singleTours: action.payload
 			}
+
+		case getAllBookingType.success:
+			return {
+				...state,
+				carts: [...action.payload]
+			}
+
+		case getAllBookingAdminType.success:
+			return {
+				...state,
+				listCarts: [...action.payload]
+			}
+
 		case bookingType.success:
 
 			Toastify({ msg: 'booking successfully', type: 'success' })
 			return {
 				...state,
+			}
+		case deleteBookingType.success:
+
+			Toastify({ msg: 'delete booking successfully', type: 'success' })
+			return {
+				...state,
+				isRefresh: Date.now()
 			}
 		case delTourType.success:
 

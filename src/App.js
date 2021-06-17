@@ -26,6 +26,7 @@ import AdminLogin from './pages/AdminLogin';
 import PublicRoute from './route/Public';
 import MyCart from './pages/cart/index';
 import LoginAdmin from './pages/LoginAdmin';
+import PageBooking from './pages/PageAdmin/Bookings/AllUser';
 
 function App() {
     // const {
@@ -64,6 +65,7 @@ function App() {
                         path="/admin/dashboard"
                         component={PageDashBoard}
                     />
+                    <PrivateRoute path="/admin/bookings" component={PageBooking} />
                     <PrivateRoute path="/admin/all-tour" component={PageAllTour} />
                     <PrivateRoute path="/admin/add-tour" component={PageAddTour} />
                     <PrivateRoute path="/admin/edit-tour" component={PageEditTour} />
