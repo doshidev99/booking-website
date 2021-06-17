@@ -1,15 +1,15 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSelector } from 'react-redux';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {useSelector} from 'react-redux';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './App.css';
 import NotFoundPage from './pages/404';
 import LoginPage from './pages/Login';
 import PrivateRoute from './route/private';
 import PageRegister from './pages/Register';
-import { history } from './redux/store';
+import {history} from './redux/store';
 
 import AllTourPage from './pages/AllTourPage';
-import PageDashBoard from './pages/Dashboard/index';
+import PageDashBoard from './pages/dashboard/index';
 import DetailPage from './pages/DetailPage';
 import Chat from './pages/PageAdmin/Chat/Chat';
 import PageAddEmployee from './pages/PageAdmin/Employee/AddEmployee';
@@ -36,7 +36,6 @@ function App() {
     //     history.push('/login');
     // }
 
-    
     return (
         <div className="App">
             <Router>
@@ -64,15 +63,27 @@ function App() {
                         path="/admin/dashboard"
                         component={PageDashBoard}
                     />
-                    <PrivateRoute path="/admin/all-tour" component={PageAllTour} />
-                    <PrivateRoute path="/admin/add-tour" component={PageAddTour} />
-                    <PrivateRoute path="/admin/edit-tour" component={PageEditTour} />
+                    <PrivateRoute
+                        path="/admin/all-tour"
+                        component={PageAllTour}
+                    />
+                    <PrivateRoute
+                        path="/admin/add-tour"
+                        component={PageAddTour}
+                    />
+                    <PrivateRoute
+                        path="/admin/edit-tour"
+                        component={PageEditTour}
+                    />
                     <PrivateRoute
                         exact
                         path="/admin/all-user"
                         component={PageAllUser}
                     />
-                    <PrivateRoute path="/admin/add-user" component={PageAddUser} />
+                    <PrivateRoute
+                        path="/admin/add-user"
+                        component={PageAddUser}
+                    />
                     <PrivateRoute
                         exact
                         path="/admin/edit-user"
@@ -96,7 +107,11 @@ function App() {
                     />
 
                     <PrivateRoute exact path="/admin/chat" component={Chat} />
-                    <PrivateRoute exact path="/admin/chat/:id" component={Chat} />
+                    <PrivateRoute
+                        exact
+                        path="/admin/chat/:id"
+                        component={Chat}
+                    />
                     <Route exact path="/" component={HomePage} />
                     <Route component={NotFoundPage} />
                 </Switch>

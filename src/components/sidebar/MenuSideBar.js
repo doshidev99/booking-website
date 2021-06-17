@@ -81,6 +81,20 @@ const menusidebar = {
         },
         {
             group: {
+                title: 'Booking',
+                exact: '',
+                to: '',
+                list: [
+                    {
+                        title: 'All Booking',
+                        exact: false,
+                        to: '/admin/all-customer',
+                    },
+                ],
+            },
+        },
+        {
+            group: {
                 title: 'Chat',
                 exact: '',
                 to: '',

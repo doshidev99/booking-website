@@ -34,10 +34,10 @@ const PageAllTour = () => {
                                         className="navLink"
                                         to={`/all-tour/${tour._id}`}
                                     >
-                                        {/* <img
+                                        <img
                                             src={`${TOUR_IMG}/${tour.avatar}`}
                                             alt=""
-                                        /> */}
+                                        />
                                     </NavLink>
                                 </div>
                                 <div className="name-tour">
