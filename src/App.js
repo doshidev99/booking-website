@@ -24,6 +24,8 @@ import PageEditUser from './pages/PageAdmin/Users/EditUser';
 import HomePage from './pages/Home/homepage';
 import AdminLogin from './pages/AdminLogin';
 import PublicRoute from './route/Public';
+import MyCart from './pages/cart/index';
+import LoginAdmin from './pages/LoginAdmin';
 
 function App() {
     // const {
@@ -39,8 +41,10 @@ function App() {
         <div className="App">
             <Router>
                 <Switch>
+                    <Route path="/my-cart" exact component={MyCart} />
                     <Route path="/register" exact component={PageRegister} />
                     <Route path="/login" exact component={LoginPage} />
+                    <Route path="/admin/login" exact component={LoginAdmin} />
                     {/* <Route path="/admin/login" exact component={AdminLogin} /> */}
 
                     <Route path="/all-tour" exact component={AllTourPage} />

@@ -1,0 +1,39 @@
+.section-my-cart {
+    margin: 50px 0;
+    .product-inline {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .img-small {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            img {
+                width: 100%;
+            }
+        }
+        .name-product {
+            padding-left: 10px;
+        }
+    }
+    .total-cart {
+        display: flex;
+        justify-content: flex-end;
+        margin-right: 166px;
+        span {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 10px;
+            font-weight: 500;
+            font-size: 19px;
+        }
+        .btn-pay {
+            .fa-amazon-pay {
+                padding: 0 5px;
+            }
+        }
+    }
+}

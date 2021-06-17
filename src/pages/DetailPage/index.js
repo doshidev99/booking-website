@@ -1,34 +1,34 @@
-import React, {useEffect} from 'react';
-import {Button, Container} from 'react-bootstrap';
-import {useDispatch, useSelector} from 'react-redux';
-import {useParams} from 'react-router';
+import React, { useEffect } from 'react';
+import { Button, Container } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 
 import AppNotFound from '../../components/AppNotFound';
-import {PrivateLayout} from '../PrivateLayout';
+import { PrivateLayout } from '../PrivateLayout';
 
-import {getTourByIdType, bookingType} from '../../redux/actionTypes';
+import { getTourByIdType, bookingType } from '../../redux/actionTypes';
 
 import './detailpage.scss';
-import {Spin} from 'antd';
-import {TOUR_IMG} from '../../utils';
+import { Spin } from 'antd';
+import { TOUR_IMG } from '../../utils';
+import { useHistory } from 'react-router-dom';
 
 const DetailPage = () => {
     const dispatch = useDispatch();
 
-    const {tourID} = useParams();
+    const history = useHistory();
+    const { tourID } = useParams();
 
     useEffect(() => {
-        dispatch({type: getTourByIdType.request, payload: tourID});
+        dispatch({ type: getTourByIdType.request, payload: tourID });
     }, [dispatch, tourID]);
 
     const {
-        loadingState: {loadingGetTourById},
-        tourState: {singleTours},
+        loadingState: { loadingGetTourById },
+        tourState: { singleTours },
     } = useSelector((cS) => cS);
 
 
-      // eslint-disable-next-line no-console
-    console.log(singleTours, '<-singleTours---');
     const showDetailTour = () => {
         if (Object.keys(singleTours).length) {
             return (
@@ -65,7 +65,12 @@ const DetailPage = () => {
     };
 
     const onHandleAdd = () => {
-        dispatch({type: bookingType.request, payload: singleTours});
+        const token = localStorage.getItem('token')
+        if (token) {
+            dispatch({ type: bookingType.request, payload: singleTours });
+        } else {
+            history.push('/login')
+        }
     };
 
     return (

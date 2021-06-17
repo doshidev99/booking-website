@@ -15,6 +15,8 @@ import {
 
 function* getAllAction() {
 	try {
+			// eslint-disable-next-line no-console
+		console.log('getAllAction', '<--getAllAction--');
 		const { data } = yield empApi.getAll();
 
 		if (data) {
@@ -27,9 +29,9 @@ function* getAllAction() {
 }
 
 
-function* addUserAction(action) {
+function* addEmployeeAction(action) {
 	try {
-		const { data: { data } } = yield empApi.addUser(action.payload);
+		const { data: { data } } = yield empApi.addEmployee(action.payload);
 
 		if (data) {
 			yield put({ type: addEmployeeType.success, payload: data });
@@ -80,7 +82,7 @@ function* getUserByIdAction(action) {
 
 export default function* sagas() {
 	yield takeLeading(getAllEmployeeType.request, getAllAction);
-	yield takeLeading(addEmployeeType.request, addUserAction);
+	yield takeLeading(addEmployeeType.request, addEmployeeAction);
 	yield takeLeading(updateEmployeeType.request, updateUserAction);
 	yield takeLeading(delEmployeeType.request, delUserAction);
 	yield takeLeading(getEmployeeByIdType.request, getUserByIdAction);

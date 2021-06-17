@@ -9,7 +9,7 @@ import { loginType } from '../../redux/actionTypes';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-const Login = () => {
+const LoginAdmin = () => {
     const dispatch = useDispatch();
     const [state, setState] = useState({});
 
@@ -23,7 +23,7 @@ const Login = () => {
     };
 
     const onSubmit = (values) => {
-        dispatch({ type: loginType.request, payload: values, history });
+        dispatch({ type: loginType.request, payload: values, history, role: 1 });
     };
 
     if (loadingLogin) return <Spin />;
@@ -40,7 +40,7 @@ const Login = () => {
                                 className="shadow-light rounded-circle mb-5 mt-2"
                             />
                             <h4 className="text-dark font-weight-normal">
-                                Welcome to
+                                Welcome to 
                                 <span className="font-weight-bold">
                                     DTU TOUR
                                 </span>
@@ -50,9 +50,6 @@ const Login = () => {
                                 register if you don't already have an account.
                             </p>
 
-
-
-                            {/*  */}
 
                             <Formik
                                 initialValues={{
@@ -118,9 +115,6 @@ const Login = () => {
 
 
                                         <div className="form-group text-right">
-                                            <Link to="#" className="float-left mt-3">
-                                                Forgot Password?
-                                            </Link>
                                             <Button
                                                 type="submit"
                                                 className="btn btn-primary btn-lg btn-icon icon-right"
@@ -166,9 +160,7 @@ const Login = () => {
                                     <h5 className="mb-2 display-4 font-weight-bold">
                                         WellCome To WanderLust - Tour
                                     </h5>
-                                    {/* <h5 className="font-weight-normal text-muted-transparent">Well Come To WanderLust - Tour</h5> */}
                                 </div>
-                                {/* Photo by <a className="text-light bb" target="_blank" href="https://unsplash.com/photos/a8lTjWJJgLA">Justin Kauffman</a> on <a className="text-light bb" target="_blank" href="https://unsplash.com">Unsplash</a> */}
                             </div>
                         </div>
                     </div>
@@ -178,4 +170,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default LoginAdmin;

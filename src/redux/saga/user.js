@@ -31,9 +31,9 @@ function* addUserAction(action) {
 	try {
 		const { data: { data } } = yield userApi.addUser(action.payload);
 
-		if (data) {
+		if (Object.keys(data).length) {
 			yield put({ type: addUserType.success, payload: data });
-			action.history.push('/admin/all-user')
+			action.history.push('/')
 		}
 	} catch (error) {
 		apiErrorHandler(error);
@@ -60,7 +60,7 @@ function* delUserAction(action) {
 	try {
 		const { data } = yield userApi.delUser(action.payload);
 
-			// eslint-disable-next-line no-console
+		// eslint-disable-next-line no-console
 		console.log(action, '<---action-');
 		if (data) {
 			yield put({ type: delUserType.success, payload: data });

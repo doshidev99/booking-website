@@ -49,6 +49,7 @@ const PageAllEmployee = () => {
 
   const onSubmit = (values) => {
     dispatch({ type: updateEmployeeType.request, payload: { id: singleEmployee._id, data: values } });
+    setIsToggle(() => false)
   };
 
 
@@ -96,18 +97,7 @@ const PageAllEmployee = () => {
                             {errors.nameEmployee}
                           </Form.Text>
                         </Form.Group>
-                        <Form.Group controlId="formBasicEmail">
-                          <Form.Control
-                            type="text"
-                            name="roleEmployee"
-                            placeholder="Role Employee"
-                            defaultValue={values.roleEmployee}
-                            onChange={handleChange}
-                          />
-                          <Form.Text className="text-muted">
-                            {errors.roleEmployee}
-                          </Form.Text>
-                        </Form.Group>
+
                         <Form.Group controlId="formBasicEmail">
                           <Form.Control
                             type="text"
@@ -169,38 +159,37 @@ const PageAllEmployee = () => {
                   <th>Email Employee</th>
                   <th>Phone</th>
                   <th>Address</th>
-                  <th>Role</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {
-                  loadingGetAllEmployee && <Spin />
-                }
-                {
-                  listEmployee.map((item) => (
-                    <tr>
-                      <td>{item.nameEmployee}</td>
-                      <td>{item.emailEmployee}</td>
-                      <td>{item.numberPhoneEmployee}</td>
-                      <td>{item.addressEmployee}</td>
-                      <td>{item.roleEmployee}</td>
-                      <td>
-                        <div className="btnAction">
-                          <button type="button" class="btn btn-primary"
-                            onClick={() => handleShow(item._id)}
-                          >
-                            <i class="fas fa-pencil-alt"></i>
-                          </button>
 
-                          <button type="button" class="btn btn-danger" onClick={() => handleDelete(item._id)}>
-                            <i class="far fa-trash-alt"></i>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))
-                }
+                <>
+                  {
+                    listEmployee.map((item) => (
+                      <tr>
+                        <td>{item.nameEmployee}</td>
+                        <td>{item.emailEmployee}</td>
+                        <td>{item.numberPhoneEmployee}</td>
+                        <td>{item.addressEmployee}</td>
+                        <td>
+                          <div className="btnAction">
+                            <button type="button" class="btn btn-primary"
+                              onClick={() => handleShow(item._id)}
+                            >
+                              <i class="fas fa-pencil-alt"></i>
+                            </button>
+
+                            <button type="button" class="btn btn-danger" onClick={() => handleDelete(item._id)}>
+                              <i class="far fa-trash-alt"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                  }
+                </>
+
 
               </tbody>
               {/* <tbody>

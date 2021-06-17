@@ -21,8 +21,11 @@ function* loginAction(action) {
 			yield put({ type: loginType.success, payload: accessToken, user });
 			const flag = localStorage.getItem('token');
 			if (flag) {
-				// action.history.push('/')
-				window.location.href = 'http://localhost:3000/'
+				if(action.role ===1) {
+					window.location.href = 'http://localhost:3000/admin/dashboard'
+				}else {
+					window.location.href = 'http://localhost:3000/'
+				}
 			}
 		}
 	} catch (error) {

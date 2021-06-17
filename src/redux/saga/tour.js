@@ -68,6 +68,9 @@ function* delTourAction(action) {
 
 function* bookingAction(action) {
 	try {
+
+			// eslint-disable-next-line no-console
+		console.log(action, '<-action---');
 		const { data: { tourInCart } } = yield tourApi.booking(action.payload);
 
 		if (tourInCart) {

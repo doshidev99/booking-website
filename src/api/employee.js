@@ -14,7 +14,7 @@ export const empApi = {
 		}
 	},
 
-	addUser: async (data) => {
+	addEmployee: async (data) => {
 		try {
 			const res = await axios.post(
 				'/employee/add-employee',

@@ -26,7 +26,8 @@ const chatRoom = (state = initialState, action) => {
 
 			return {
 				...state,
-				listEmployee: [...state.listEmployee, ...action.payload]
+				isRefresh: Date.now(),
+				listEmployee: [...state.listEmployee, action.payload]
 			}
 
 		case updateEmployeeType.success:
