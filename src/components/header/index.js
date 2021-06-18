@@ -58,7 +58,7 @@ const Header = () => {
                     className="dropdown-item has-icon text-danger"
                 >
                     <i className="fas fa-sign-out-alt" />
-                    Login
+                    Đăng nhập
                 </Link>
             );
         }
@@ -68,7 +68,7 @@ const Header = () => {
                 onClick={handleLogout}
             >
                 <i className="fas fa-sign-out-alt" />
-                Logout
+                Đăng xuất
             </div>
         );
     };
@@ -108,7 +108,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-h-1.jpg"
+                                            src="../../../img/slide1.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -116,7 +116,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-h-2.jpg"
+                                            src="../../../img/slide2.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -124,7 +124,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-h-3.jpg"
+                                            src="../../../img/slide3.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -132,7 +132,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-h-4.jpg"
+                                            src="../../../img/slide4.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -140,7 +140,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-h-5.jpg"
+                                            src="../../../img/slide5.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -148,7 +148,7 @@ const Header = () => {
                                 <SwiperSlide>
                                     <div className="img-slide-header">
                                         <img
-                                            src="../../../img/bg-h-6.jpg"
+                                            src="../../../img/slide6.jpg"
                                             alt=""
                                         />
                                     </div>
@@ -168,7 +168,7 @@ const Header = () => {
                                                 to="/"
                                             >
                                                 <img
-                                                    src="../../../img/logo.svg"
+                                                    src="../../../img/s-removebg.png"
                                                     alt=""
                                                 />
                                             </NavLink>
@@ -185,7 +185,7 @@ const Header = () => {
                                                         className="navLink"
                                                         to="/"
                                                     >
-                                                        HOME
+                                                        TRANG CHỦ
                                                     </NavLink>
                                                 </li>
                                                 <li>
@@ -243,28 +243,28 @@ const Header = () => {
                                                                 className="dropdown-item has-icon"
                                                             >
                                                                 <i className="far fa-user" />{' '}
-                                                                Profile
+                                                                Thông tin cá nhân
                                                             </Link>
                                                             <Link
                                                                 to="/my-cart"
                                                                 className="dropdown-item has-icon"
                                                             >
                                                                 <i className="fas fa-shopping-bag" />{' '}
-                                                                My Tours
+                                                                Tour của tôi
                                                             </Link>
                                                             <Link
                                                                 to="#"
                                                                 className="dropdown-item has-icon"
                                                             >
                                                                 <i className="fas fa-bolt" />{' '}
-                                                                Activities
+                                                                Hoạt động
                                                             </Link>
                                                             <Link
                                                                 to="features-settings.html"
                                                                 className="dropdown-item has-icon"
                                                             >
                                                                 <i className="fas fa-cog" />{' '}
-                                                                Settings
+                                                                Cài đặt
                                                             </Link>
                                                             <div className="dropdown-divider" />
                                                             {showMenu()}
@@ -285,7 +285,7 @@ const Header = () => {
                                     <Form onSubmit={(e) => onSubmit(e)}>
                                         <Form.Control
                                             className="input-search"
-                                            placeholder="Find Tour"
+                                            placeholder="Nhập tên tour cần tìm"
                                             type="text"
                                             name="keyword"
                                             onChange={handleOnChangeInput}
@@ -296,7 +296,7 @@ const Header = () => {
                                             type="button"
                                             onClick={onClickSearch}
                                         >
-                                            <span>Find</span>
+                                            <span>Tìm kiếm</span>
                                         </button>
                                     </div>
                                 </div>

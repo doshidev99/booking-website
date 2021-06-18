@@ -38,7 +38,7 @@ const DetailPage = () => {
                         <legend>{singleTours.tourName}</legend>
                     </div>
                     <div className="img-detail-tour">
-                        {/* <img src={`${TOUR_IMG}/${singleTours.avatar}`} alt="" /> */}
+                        <img src={`${TOUR_IMG}/${singleTours.avatar}`} alt="" />
                     </div>
                     <div className="description-detail-tour">
                         <div className="description-detail">

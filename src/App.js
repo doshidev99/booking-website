@@ -9,7 +9,7 @@ import PageRegister from './pages/Register';
 import { history } from './redux/store';
 
 import AllTourPage from './pages/AllTourPage';
-import PageDashBoard from './pages/Dashboard/index';
+import PageDashBoard from './pages/dashboard/index';
 import DetailPage from './pages/DetailPage';
 import Chat from './pages/PageAdmin/Chat/Chat';
 import PageAddEmployee from './pages/PageAdmin/Employee/AddEmployee';

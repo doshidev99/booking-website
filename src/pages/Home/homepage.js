@@ -71,10 +71,10 @@ const HomePage = () => {
                             <div className="destination-item">
                                 <div className="img-destination-item">
                                     <NavLink to={`/detail-tour/${item._id}`}>
-                                        {/* <img
+                                        <img
                                             src={`${TOUR_IMG}/${item.avatar}`}
                                             alt=""
-                                        /> */}
+                                        />
                                     </NavLink>
                                 </div>
                                 <div className="title-destination-item">
@@ -105,10 +105,10 @@ const HomePage = () => {
                                         className="navLink"
                                         to={`/detail-tour/${tour._id}`}
                                     >
-                                        {/* <img
+                                        <img
                                             src={`${TOUR_IMG}/${tour.avatar}`}
                                             alt=""
-                                        /> */}
+                                        />
                                     </NavLink>
                                 </div>
                                 <div className="name-tour">
