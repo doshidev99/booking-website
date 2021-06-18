@@ -49,17 +49,17 @@ const PageRegister = () => {
         <div className="d-flex flex-wrap align-items-stretch">
           <div className="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
             <div className="p-4 m-3">
-              <img src="../../../img/logoLogin.svg" alt="logo" width="80" className="shadow-light rounded-circle mb-5 mt-2" />
+              <img src="../../../img/s-removebg.png" alt="logo" width="80" className="shadow-light rounded-circle mb-5 mt-2" />
               <h4 className="text-dark font-weight-normal">
-                Welcome to
+                Chào mừng bạn đến với &#160;
                   <span className="font-weight-bold">DTU TOUR</span>
               </h4>
-              <p className="text-muted">Create account</p>
+              <p className="text-muted">ĐĂNG KÝ TÀI KHOẢN</p>
               <Form className="form_" onSubmit={onSubmit}>
                 <Form.Group controlId="formBasicEmail">
                   <Form.Control
                     type="text"
-                    placeholder="User Name"
+                    placeholder="Username"
                     name="userName"
                     onChange={onChange}
                   />
@@ -68,7 +68,7 @@ const PageRegister = () => {
                 <Form.Group controlId="formBasicEmail">
                   <Form.Control
                     type="password"
-                    placeholder="password"
+                    placeholder="Mật khẩu"
                     name="password"
                     onChange={onChange}
                   />
@@ -77,7 +77,7 @@ const PageRegister = () => {
                 <Form.Group controlId="formBasicEmail">
                   <Form.Control
                     type="password"
-                    placeholder="reply password"
+                    placeholder="Nhập lại mật khẩu"
                     name="password"
                     onChange={onChange}
                   />
@@ -86,7 +86,7 @@ const PageRegister = () => {
                 <Form.Group controlId="formBasicEmail">
                   <Form.Control
                     type="email"
-                    placeholder="email"
+                    placeholder="Email"
                     name="email"
                     onChange={onChange}
                   />
@@ -95,7 +95,7 @@ const PageRegister = () => {
                 <Form.Group controlId="formBasicEmail">
                   <Form.Control
                     type="text"
-                    placeholder="number phone"
+                    placeholder="Số điện thoại"
                     name="numberPhoneUser"
                     onChange={onChange}
                   />
@@ -107,8 +107,11 @@ const PageRegister = () => {
 
                 <div className="form-group text-right">
 
-                  <Button type="submit" className="btn btn-primary btn-lg btn-icon icon-right" tabIndex="4">
-                    Sign Up
+                  <Button type="submit" className="btn btn-primary btn-lg btn-icon icon-right" tabIndex="4" style={{
+                                                    backgroundColor: '#ffc600',
+                                                    border: 'none'
+                                                }}>
+                    ĐĂNG KÝ
                                   </Button>
                 </div>
 
@@ -117,20 +120,14 @@ const PageRegister = () => {
           </div>
           <div className="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom">
             <div className="imgBGLogin" style={{ width: '100%' }}>
-              <img style={{ width: '100%' }} src="../../../../img/logoLogin.svg" />
+              <img style={{ width: '100%' }} src="../../../../img/registerimg.jpg" />
             </div>
             <div className="absolute-bottom-left index-2">
               <div className="text-light p-5 pb-2">
                 <div className="mb-5 pb-3">
-                  <h5 className="mb-2 display-4 font-weight-bold">WellCome To WanderLust - Tour</h5>
+                  <h5 className="mb-2 display-4 font-weight-bold">Chào mừng đến với DTU TOUR</h5>
                   {/* <h5 className="font-weight-normal text-muted-transparent">Bali, Indonesia</h5> */}
                 </div>
-                  Photo by
-                  {' '}
-                <a className="text-light bb" target="_blank" href="https://unsplash.com/photos/a8lTjWJJgLA" rel="noreferrer">Justin Kauffman</a>
-                {' '}
-                  on
-                  <a className="text-light bb" target="_blank" href="https://unsplash.com" rel="noreferrer">Unsplash</a>
               </div>
             </div>
           </div>

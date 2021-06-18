@@ -81,7 +81,7 @@ const PageAllTour = props => {
             <div className="alltourpage">
                 <Modal show={isToggle} onHide={handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Update Tour</Modal.Title>
+                        <Modal.Title>Cập nhật tour</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
 
@@ -127,7 +127,7 @@ const PageAllTour = props => {
                                                     <Form.Control
                                                         type="text"
                                                         name="tourName"
-                                                        placeholder="Name Tour"
+                                                        placeholder="Tên tour"
                                                         defaultValue={values.tourName}
                                                         onChange={handleChange}
                                                     />
@@ -139,7 +139,7 @@ const PageAllTour = props => {
                                                     <Form.Control
                                                         type="text"
                                                         name="startAddress"
-                                                        placeholder="Start Address"
+                                                        placeholder="Địa chỉ khởi hành"
                                                         defaultValue={values.startAddress}
                                                         onChange={handleChange}
                                                     />
@@ -150,7 +150,7 @@ const PageAllTour = props => {
                                                 <Form.Group controlId="formBasicEmail">
                                                     <Form.Control
                                                         type="date"
-                                                        placeholder="Start Date"
+                                                        placeholder="Ngày đi"
                                                         name="startDate"
                                                         onChange={handleChange}
                                                     />
@@ -161,7 +161,7 @@ const PageAllTour = props => {
                                                 <Form.Group controlId="formBasicEmail">
                                                     <Form.Control
                                                         type="date"
-                                                        placeholder="End Date"
+                                                        placeholder="Ngày về"
                                                         name="endDate"
                                                         onChange={handleChange}
                                                     />
@@ -172,7 +172,7 @@ const PageAllTour = props => {
                                                 <Form.Group controlId="formBasicEmail">
                                                     <Form.Control
                                                         type="number"
-                                                        placeholder="Price Tour"
+                                                        placeholder="Giá tour"
                                                         name="priceTour"
                                                         defaultValue={values.priceTour}
                                                         onChange={handleChange}
@@ -184,7 +184,7 @@ const PageAllTour = props => {
                                                 <Form.Group controlId="formBasicEmail">
                                                     <Form.Control
                                                         type="number"
-                                                        placeholder="Quantity People"
+                                                        placeholder="Số lượng khách"
                                                         name="qtyPeople"
                                                         defaultValue={values.qtyPeople}
                                                         onChange={handleChange}
@@ -219,7 +219,7 @@ const PageAllTour = props => {
                                                     <Form.Text className="text-muted" />
                                                 </Form.Group>
                                                 <Button variant="primary" type="submit">
-                                                    Update Tour
+                                                    Cập nhật tour
                                                 </Button>
                                             </Form>
                                         )}
@@ -232,17 +232,17 @@ const PageAllTour = props => {
                 </Modal >
 
                 <div className="table-all-tour">
-                    <legend>All Tour</legend>
+                    <legend>DANH SÁCH TOUR</legend>
                     <Table striped bordered hover>
                         <thead>
                             <tr>
-                                <th>Name Tour</th>
-                                <th>Start Address</th>
-                                <th>Start Date</th>
-                                <th>End Date</th>
-                                <th>Price Tour (VND)</th>
-                                <th>QTY People</th>
-                                <th>Action</th>
+                                <th>Tên tour</th>
+                                <th>Địa chỉ khởi hành</th>
+                                <th>Ngày đi</th>
+                                <th>Ngày về</th>
+                                <th>Giá tour (VND)</th>
+                                <th>Số lượng khách</th>
+                                <th>Thao tác</th>
                             </tr>
                         </thead>
 
@@ -258,8 +258,8 @@ const PageAllTour = props => {
                                         <td>{tour?.priceTour?.toLocaleString('vi', { style: 'currency', currency: 'VND' }) || ''}</td>
                                         <td>{tour.qtyPeople}</td>
                                         <td className="td-action">
-                                            <Button onClick={() => handleShow(tour._id)} >  Edit </Button>
-                                            <Button variant="danger" className="ml-2" onClick={() => handleDeleteTour(tour._id)} > Del </Button>
+                                            <Button onClick={() => handleShow(tour._id)} ><i class="fas fa-pencil-alt"></i></Button>
+                                            <Button variant="danger" className="ml-2" onClick={() => handleDeleteTour(tour._id)} ><i class="far fa-trash-alt"></i>  </Button>
                                         </td>
                                     </tr>
                                 ))}

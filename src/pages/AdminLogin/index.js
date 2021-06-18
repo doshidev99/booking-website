@@ -33,20 +33,19 @@ const AdminLogin = () => {
                     <div className="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                         <div className="p-4 m-3">
                             <img
-                                src="../../../img/logoLogin.svg"
+                                src="../../../img/s-removebg.png"
                                 alt="logo"
                                 width="80"
                                 className="shadow-light rounded-circle mb-5 mt-2"
                             />
                             <h4 className="text-dark font-weight-normal">
-                                Welcome to
+                                Chào mừng Admin &#160;
                                 <span className="font-weight-bold">
                                     DTU TOUR
                                 </span>
                             </h4>
                             <p className="text-muted">
-                                Before you get started, you must login or
-                                register if you don't already have an account.
+                                Vui lòng đăng nhập để thực hiện các chức năng quản lý ...
                             </p>
                             <Form className="form_" onSubmit={onSubmit}>
                                 <Form.Group controlId="formBasicEmail">
@@ -60,7 +59,7 @@ const AdminLogin = () => {
                                 <Form.Group controlId="formBasicEmail">
                                     <Form.Control
                                         type="password"
-                                        placeholder="password"
+                                        placeholder="Mật khẩu"
                                         name="txt_password"
                                         onChange={onChange}
                                     />
@@ -79,20 +78,20 @@ const AdminLogin = () => {
                                             className="custom-control-label"
                                             htmlFor="remember-me"
                                         >
-                                            Remember Me
+                                            Ghi nhớ mật khẩu
                                         </label>
                                     </div>
                                 </div>
                                 <div className="form-group text-right">
                                     <Link to="#" className="float-left mt-3">
-                                        Forgot Password?
+                                        Quên mật khẩu?
                                     </Link>
                                     <Button
                                         type="submit"
                                         className="btn btn-primary btn-lg btn-icon icon-right"
                                         tabIndex="4"
                                     >
-                                        Login
+                                        ĐĂNG NHẬP
                                     </Button>
                                 </div>
 

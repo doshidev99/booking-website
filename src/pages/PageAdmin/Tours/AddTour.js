@@ -25,12 +25,12 @@ const PageAddTour = () => {
 
   const initialValue = {
     tourID: '1',
-    tourName: 'truong add',
-    startAddress: 'viet nam',
+    tourName: '',
+    startAddress: '',
     startDate: '10/10/2020',
     endDate: '10/10/2021',
-    priceTour: 20000,
-    qtyPeople: 20000,
+    priceTour: '',
+    qtyPeople: '',
     descriptionTour: 'lorem ipsum ipsum ipsum',
     detailTour: 'lorem ipsum ipsum ipsum',
   }
@@ -72,7 +72,7 @@ const PageAddTour = () => {
       <div className="pageaddtour">
         <div className="form">
           <Container>
-            <legend>Add Tour</legend>
+            <legend>THÊM MỚI TOUR</legend>
 
             <Formik
               initialValues={initialValue}
@@ -111,7 +111,7 @@ const PageAddTour = () => {
                     <Form.Control
                       type="text"
                       name="tourName"
-                      placeholder="Name Tour"
+                      placeholder="Tên tour"
                       value={values.tourName}
                       onChange={handleChange}
                     />
@@ -123,7 +123,7 @@ const PageAddTour = () => {
                     <Form.Control
                       type="text"
                       name="startAddress"
-                      placeholder="Start Address"
+                      placeholder="Địa chỉ khởi hành"
                       value={values.startAddress}
                       onChange={handleChange}
                     />
@@ -134,7 +134,7 @@ const PageAddTour = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="date"
-                      placeholder="Start Date"
+                      placeholder="Ngày đi"
                       name="startDate"
                       onChange={handleChange}
                     />
@@ -145,7 +145,7 @@ const PageAddTour = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="date"
-                      placeholder="End Date"
+                      placeholder="Ngày về"
                       name="endDate"
                       onChange={handleChange}
                     />
@@ -156,7 +156,7 @@ const PageAddTour = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="number"
-                      placeholder="Price Tour"
+                      placeholder="Giá tour"
                       name="priceTour"
                       value={values.priceTour}
                       onChange={handleChange}
@@ -168,7 +168,7 @@ const PageAddTour = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="number"
-                      placeholder="Quantity People"
+                      placeholder="Số lượng khách"
                       name="qtyPeople"
                       value={values.qtyPeople}
                       onChange={handleChange}
@@ -216,7 +216,7 @@ const PageAddTour = () => {
                     <Form.Text className="text-muted" />
                   </Form.Group>
                   <Button className="btn_submitForm" variant="primary" type="submit">
-                    Create Tour
+                    Thêm mới tour
                 </Button>
                 </Form>
               )}

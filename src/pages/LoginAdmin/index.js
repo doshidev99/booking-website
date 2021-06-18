@@ -34,20 +34,19 @@ const LoginAdmin = () => {
                     <div className="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                         <div className="p-4 m-3">
                             <img
-                                src="../../../img/logoLogin.svg"
+                                src="../../../img/s-removebg.png"
                                 alt="logo"
                                 width="80"
                                 className="shadow-light rounded-circle mb-5 mt-2"
                             />
                             <h4 className="text-dark font-weight-normal">
-                                Welcome to 
+                                Chào mừng Admin &#160; 
                                 <span className="font-weight-bold">
                                     DTU TOUR
                                 </span>
                             </h4>
                             <p className="text-muted">
-                                Before you get started, you must login or
-                                register if you don't already have an account.
+                                Vui lòng đăng nhập để thực hiện các chức năng quản lý ...
                             </p>
 
 
@@ -84,7 +83,7 @@ const LoginAdmin = () => {
                                             <Form.Control
                                                 type="password"
                                                 name="txt_password"
-                                                placeholder="password"
+                                                placeholder="Mật khẩu"
                                                 onChange={handleChange}
                                             />
                                             <Form.Text className="d-flex text-danger">
@@ -108,7 +107,7 @@ const LoginAdmin = () => {
                                                     className="custom-control-label"
                                                     htmlFor="remember-me"
                                                 >
-                                                    Remember Me
+                                                    Ghi nhớ mật khẩu
                                                 </label>
                                             </div>
                                         </div>
@@ -120,28 +119,28 @@ const LoginAdmin = () => {
                                                 className="btn btn-primary btn-lg btn-icon icon-right"
                                                 tabIndex="4"
                                                 style={{
-                                                    marginLeft: 5
+                                                    marginLeft: 5,
+                                                    backgroundColor: '#ffc600',
+                                                    border: 'none'
                                                 }}
                                             >
-                                                Login
+                                                ĐĂNG NHẬP
                                             </Button>
                                         </div>
 
                                         <div className="mt-5 text-center">
-                                            Don't have an account?
-                                            <Link to="/register">Create new one</Link>
+                                            Chưa có tài khoản?
+                                            <Link to="/register" style={{color: '#ffc600'}}>Đăng ký ngay</Link>
                                         </div>
                                     </Form>
                                 )}
                             </Formik>
 
                             <div className="text-center mt-5 text-small">
-                                Copyright &copy; Your Company. Made with 💙 by
-                                Stisla
                                 <div className="mt-2">
-                                    <Link to="#">Privacy Policy</Link>
+                                    <Link to="#" style={{color: '#ffc600'}}>Điều khoản</Link>
                                     <div className="bullet" />
-                                    <Link to="#">Terms of Service</Link>
+                                    <Link to="#" style={{color: '#ffc600'}}>Chính sách bảo mật</Link>
                                 </div>
                             </div>
                         </div>
@@ -151,14 +150,14 @@ const LoginAdmin = () => {
                             <img
                                 style={{ width: '100%' }}
                                 alt=""
-                                src="../../../../img/logoLogin.svg"
+                                src="../../../../img/login1.jpg"
                             />
                         </div>
                         <div className="absolute-bottom-left index-2">
                             <div className="text-light p-5 pb-2">
                                 <div className="mb-5 pb-3">
                                     <h5 className="mb-2 display-4 font-weight-bold">
-                                        WellCome To WanderLust - Tour
+                                        Chào mừng đến với DTU TOUR
                                     </h5>
                                 </div>
                             </div>

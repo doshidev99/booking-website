@@ -75,11 +75,11 @@ const PageAllUser = () => {
       <div className="pagealluser">
         <Container>
           <div className="table-all-user">
-            <legend>All User</legend>
+            <legend>DANH SÁCH USER</legend>
 
             <Modal show={isToggle} onHide={handleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Update User</Modal.Title>
+                <Modal.Title>Cập nhật user</Modal.Title>
               </Modal.Header>
               <Modal.Body>
 
@@ -108,7 +108,7 @@ const PageAllUser = () => {
                                 <Form.Control
                                   type="text"
                                   name="userName"
-                                  placeholder="user name"
+                                  placeholder="Username"
                                   defaultValue={values.userName}
                                   onChange={handleChange}
                                 />
@@ -120,7 +120,7 @@ const PageAllUser = () => {
                                 <Form.Control
                                   type="text"
                                   name="numberPhoneUser"
-                                  placeholder="Phone number"
+                                  placeholder="Số điện thoại"
                                   defaultValue={values.numberPhoneUser}
                                   onChange={handleChange}
                                 />
@@ -131,7 +131,7 @@ const PageAllUser = () => {
                               <Form.Group controlId="formBasicEmail">
                                 <Form.Control
                                   type="text"
-                                  placeholder="email"
+                                  placeholder="Email"
                                   name="email"
                                   defaultValue={values.email}
                                   onChange={handleChange}
@@ -154,7 +154,7 @@ const PageAllUser = () => {
                                 <Form.Text className="text-muted" />
                               </Form.Group>
                               <Button variant="primary" type="submit">
-                                Update User
+                                Cập nhật user
                               </Button>
                             </Form.Group>
                           </Form>
@@ -177,11 +177,11 @@ const PageAllUser = () => {
                   <>
                     <thead>
                       <tr>
-                        <th>User Name</th>
-                        <th>Pass word</th>
+                        <th>Username</th>
+                        <th>Mật khẩu</th>
                         <th>Email</th>
-                        <th>Number Phone</th>
-                        <th>Action</th>
+                        <th>Số điện thoại</th>
+                        <th>Thao tác</th>
                       </tr>
                     </thead>
                     <tbody>

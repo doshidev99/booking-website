@@ -59,7 +59,7 @@ const PageAllEmployee = () => {
 
         <Modal show={isToggle} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Update Tour</Modal.Title>
+            <Modal.Title>Cập nhật nhân viên</Modal.Title>
           </Modal.Header>
           <Modal.Body>
 
@@ -89,7 +89,7 @@ const PageAllEmployee = () => {
                           <Form.Control
                             type="text"
                             name="nameEmployee"
-                            placeholder="name Employee"
+                            placeholder="Tên nhân viên"
                             defaultValue={values.nameEmployee}
                             onChange={handleChange}
                           />
@@ -102,7 +102,7 @@ const PageAllEmployee = () => {
                           <Form.Control
                             type="text"
                             name="addressEmployee"
-                            placeholder=" Address"
+                            placeholder=" Địa chỉ"
                             defaultValue={values.addressEmployee}
                             onChange={handleChange}
                           />
@@ -113,7 +113,7 @@ const PageAllEmployee = () => {
                         <Form.Group controlId="formBasicEmail">
                           <Form.Control
                             type="text"
-                            placeholder="number Phone Employee "
+                            placeholder="Số điện thoại"
                             name="numberPhoneEmployee"
                             defaultValue={values.numberPhoneEmployee}
                             onChange={handleChange}
@@ -125,7 +125,7 @@ const PageAllEmployee = () => {
                         <Form.Group controlId="formBasicEmail">
                           <Form.Control
                             type="text"
-                            placeholder="email Employee"
+                            placeholder="Email"
                             name="emailEmployee"
                             defaultValue={values.emailEmployee}
                             onChange={handleChange}
@@ -136,7 +136,7 @@ const PageAllEmployee = () => {
                         </Form.Group>
 
                         <Button variant="primary" type="submit">
-                          Update Employee
+                          Cập nhật nhân viên
                         </Button>
                       </Form>
                     )}

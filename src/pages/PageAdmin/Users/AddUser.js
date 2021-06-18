@@ -18,11 +18,11 @@ const PageAddUser = () => {
   const fileInput = useRef();
 
   const initialValue = {
-    userName: '1',
-    password: 'truong add',
-    role: 'viet nam',
-    email: '10/10/2020',
-    numberPhoneUser: '10/10/2021',
+    userName: '',
+    password: '',
+    role: 'member',
+    email: '',
+    numberPhoneUser: '',
   }
 
   const handleChangeText = (value) => {
@@ -53,7 +53,7 @@ const PageAddUser = () => {
       <div className="pageaddtour">
         <div className="form">
           <Container>
-            <legend>Add User</legend>
+            <legend>THÊM USER</legend>
 
             <Formik
               initialValues={initialValue}
@@ -76,7 +76,7 @@ const PageAddUser = () => {
                     <Form.Control
                       type="text"
                       name="userName"
-                      placeholder="user Name"
+                      placeholder="Username"
                       value={values.userName}
                       onChange={handleChange}
                     />
@@ -88,6 +88,7 @@ const PageAddUser = () => {
                     <Form.Control
                       type="password"
                       name="password"
+                      placeholder="Mật khẩu"
                       value={values.password}
                       onChange={handleChange}
                     />
@@ -99,7 +100,7 @@ const PageAddUser = () => {
                     <Form.Control
                       type="text"
                       name="role"
-                      placeholder="role"
+                      placeholder="Vai trò"
                       value={values.role}
                       onChange={handleChange}
                     />
@@ -110,7 +111,7 @@ const PageAddUser = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="email"
-                      placeholder="email"
+                      placeholder="Email"
                       name="email"
                       onChange={handleChange}
                     />
@@ -121,7 +122,7 @@ const PageAddUser = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="text"
-                      placeholder="Phone"
+                      placeholder="Số điện thoại"
                       name="numberPhoneUser"
                       onChange={handleChange}
                     />
@@ -144,7 +145,7 @@ const PageAddUser = () => {
                     <Form.Text className="text-muted" />
                   </Form.Group>
                   <Button className="btn_submitForm" variant="primary" type="submit">
-                    Create User
+                    Thêm user
                 </Button>
                 </Form>
               )}
