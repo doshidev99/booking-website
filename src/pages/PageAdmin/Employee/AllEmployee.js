@@ -151,15 +151,15 @@ const PageAllEmployee = () => {
 
         <Container>
           <div className="table-all-employee">
-            <legend>All Employee</legend>
+            <legend>DANH SÁCH NHÂN VIÊN</legend>
             <Table striped bordered hover>
               <thead>
                 <tr>
-                  <th>Name Employee</th>
-                  <th>Email Employee</th>
-                  <th>Phone</th>
-                  <th>Address</th>
-                  <th>Action</th>
+                  <th>Tên nhân viên</th>
+                  <th>Email</th>
+                  <th>Số điện thoại</th>
+                  <th>Địa chỉ</th>
+                  <th>Thao tác</th>
                 </tr>
               </thead>
               <tbody>

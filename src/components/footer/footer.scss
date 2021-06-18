@@ -87,6 +87,7 @@ footer{
                     .img-logo-footer{
                         width: 202px;
                         height: 51px;
+                        margin-left: 85px;
                         img{
                             width: 100%;
                         }
@@ -95,6 +96,7 @@ footer{
                 .description-footer-item-left{
                     width: 100%;
                     height: auto;
+                    margin-top: 30px;
                     p{
                         width: 70%;
                         font-family: $font_family;
@@ -102,7 +104,7 @@ footer{
                         font-weight: normal;
                         font-size: 15px;
                         line-height: 27px;
-                        color: #999999;
+                        color: #fff;
                     }
                 }
             }
@@ -130,9 +132,9 @@ footer{
                                     font-weight: normal;
                                     font-size: 14px;
                                     line-height: 24px;
-                                    color: #999999;
+                                    color: #ffffff;
                                     &:hover{
-                                        color: #FFFFFF;
+                                        color: #c8c8c8;
                                     }
                                 }
                             }

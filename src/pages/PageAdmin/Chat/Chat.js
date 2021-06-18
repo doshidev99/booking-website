@@ -49,7 +49,7 @@ const Chat = () => {
                     <div className="conversation-area">
                         {!listConversation.length ? (
                             <div className="msg-detail">
-                                Waiting new conversation
+                                Chưa có tin nhắn mới nào
                             </div>
                         ) : (
                             <>
@@ -70,10 +70,10 @@ const Chat = () => {
                                             </div>
                                             <div className="msg-content">
                                                 <span className="msg-message">
-                                                    hello
+                                                    Active
                                                 </span>
                                                 <span className="msg-date">
-                                                    20m
+                                                    2m
                                                 </span>
                                             </div>
                                         </div>

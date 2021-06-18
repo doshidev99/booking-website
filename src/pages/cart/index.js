@@ -66,9 +66,8 @@ const MyCart = () => {
                                 <th></th>
                                 <th>Tours</th>
                                 <th>Giá</th>
-                                <th>Số Lượng</th>
-                                <th>Tổng Cộng</th>
-                                <th>action</th>
+                                <th>Trạng Thái</th>
+                                <th>Hành Động</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -92,7 +91,7 @@ const MyCart = () => {
                                             style: 'currency',
                                             currency: 'vnd',
                                         })}</td>
-                                        <td className="center-on-small-only">
+                                        {/* <td className="center-on-small-only">
                                             <div
                                                 className="btn-group radio-group"
                                                 data-toggle="buttons"
@@ -114,11 +113,14 @@ const MyCart = () => {
                                                     onClick={increment}
                                                 >+</Button>
                                             </div>
-                                        </td>
-                                        <td>{(item.tourID.priceTour * state.count).toLocaleString('vi', {
+                                        </td> */}
+                                        {/* <td>{(item.tourID.priceTour * state.count).toLocaleString('vi', {
                                             style: 'currency',
                                             currency: 'vnd',
-                                        })}</td>
+                                        })}</td> */}
+                                        <td>
+                                            <Button variant="info">Chờ xác nhận</Button>
+                                        </td>
                                         <td>
                                             <Button variant="danger" onClick={() => handleDelete(item.tourID._id)}>
                                                 <i class="far fa-trash-alt"></i>

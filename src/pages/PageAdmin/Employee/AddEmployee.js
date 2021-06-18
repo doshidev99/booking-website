@@ -42,16 +42,16 @@ const PageAddEmployee = () => {
       <div className="pageaddemployee">
         <div className="form">
           <Container>
-            <legend>Add Employee</legend>
+            <legend>THÊM NHÂN VIÊN</legend>
             <Formik
               initialValues={{
-                employeeID: 'a',
-                nameEmployee: 'a',
+                employeeID: '',
+                nameEmployee: '',
                 dayOfBirthEmployee: '',
-                genderEmployee: 'a',
-                addressEmployee: 'a',
-                emailEmployee: 'trg@gmail.com',
-                numberPhoneEmployee: '0901989800',
+                genderEmployee: '',
+                addressEmployee: '',
+                emailEmployee: '',
+                numberPhoneEmployee: '',
               }}
               validationSchema={
                 Yup.object().shape({
@@ -74,7 +74,7 @@ const PageAddEmployee = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="text"
-                      placeholder="Employee ID"
+                      placeholder="ID nhân viên"
                       name="employeeID"
                       value={values.employeeID}
                       onChange={handleChange}
@@ -86,7 +86,7 @@ const PageAddEmployee = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="text"
-                      placeholder="Name Employee"
+                      placeholder="Tên nhân viên"
                       name="nameEmployee"
                       value={values.nameEmployee}
                       onChange={handleChange}
@@ -98,7 +98,7 @@ const PageAddEmployee = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="date"
-                      placeholder="Date Of Birth"
+                      placeholder="Ngày sinh"
                       name="dayOfBirthEmployee"
                       value={values.dayOfBirthEmployee}
                       onChange={handleChange}
@@ -111,7 +111,7 @@ const PageAddEmployee = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="text"
-                      placeholder="Gender"
+                      placeholder="Giới tính"
                       name="genderEmployee"
                       value={values.genderEmployee}
                       onChange={handleChange}
@@ -123,7 +123,7 @@ const PageAddEmployee = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="text"
-                      placeholder="Address"
+                      placeholder="Địa chỉ"
                       name="addressEmployee"
                       value={values.addressEmployee}
                       onChange={handleChange}
@@ -147,7 +147,7 @@ const PageAddEmployee = () => {
                   <Form.Group controlId="formBasicEmail">
                     <Form.Control
                       type="text"
-                      placeholder="Number Phone"
+                      placeholder="Số điện thoại"
                       name="numberPhoneEmployee"
                       value={values.numberPhoneEmployee}
                       onChange={handleChange}
@@ -170,7 +170,7 @@ const PageAddEmployee = () => {
                     <Form.Text className="text-muted" />
                   </Form.Group>
                   <Button className="btn_submitForm" variant="primary" type="submit">
-                    Create Employee
+                    Thêm nhân viên
                   </Button>
                 </Form>
               )}

@@ -35,6 +35,7 @@
                     img {
                         height: 100%;
                         width: 100%;
+                        border-radius: 15px;
                     }
                 }
                 .title-destination-item {
@@ -46,7 +47,7 @@
                     .title-item {
                         width: 90%;
                         height: auto;
-                        background-color: #d5d5d5;
+                        background-color: rgba(255, 200, 0, 0.822);
                         p {
                             padding: 10px;
                             font-family: $font_family;
@@ -73,6 +74,7 @@
     }
     .our-tour {
         .title-our-tour {
+            margin-top: 20px;
             legend {
                 font-family: $font_family;
                 font-style: normal;

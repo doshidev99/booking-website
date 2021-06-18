@@ -10,13 +10,13 @@ class Footer extends Component {
                 <div className="footer">
                     <div className="bg-footer">
                         <div className="img-bg-footer">
-                            <img src="../../../img/img-bg-footer.svg" alt="" />
+                            <img src="../../../img/footer3.jpg" alt="" />
                         </div>
                     </div>
                     <div className="subscribeToOur">
                         <Container>
                             <div className="bg-subscribeToOur">
-                                <legend>Subscribe to Our Newsletter</legend>
+                                <legend>Đăng ký để nhận các ưu đãi khuyến mãi</legend>
                                 <div className="input-subscribe-footer">
                                     <Form>
                                         <Form.Control
@@ -27,7 +27,7 @@ class Footer extends Component {
                                     </Form>
                                     <div className="button-subs">
                                         <button type="submit">
-                                            <span>Send</span>
+                                            <span>Gửi</span>
                                         </button>
                                     </div>
                                 </div>
@@ -42,18 +42,17 @@ class Footer extends Component {
                                         <div className="logo-footer">
                                             <div className="img-logo-footer">
                                                 <img
-                                                    src="../../../img/logo-footer.svg"
+                                                    src="../../../img/s-removebg.png"
                                                     alt=""
                                                 />
                                             </div>
                                         </div>
                                         <div className="description-footer-item-left">
                                             <p>
-                                                Sed vel molestie libero, ac
-                                                vestibulum nunc. Vivamus quis
-                                                nibh Lorem, ipsum dolor sit amet
-                                                consectetur adipisicing elit.
-                                                Ad, neque?
+                                                Công ty cổ phần DTU TOUR
+                                            </p>
+                                            <p>
+                                                Địa chỉ : 03 Quang Trung, tp Đà Nẵng
                                             </p>
                                         </div>
                                     </div>
@@ -65,7 +64,7 @@ class Footer extends Component {
                                                 <div className="item-right">
                                                     <div className="list-menu">
                                                         <legend>
-                                                            Solutions
+                                                            Về DTU TOUR
                                                         </legend>
                                                         <ul>
                                                             <li>
@@ -73,7 +72,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Tours
+                                                                    Cách đặt tour
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -81,7 +80,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Destinations
+                                                                    Liên hệ
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -89,7 +88,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Pricing
+                                                                    Trợ giúp
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -97,7 +96,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Testimonials
+                                                                    Tuyển dụng
                                                                 </NavLink>
                                                             </li>
                                                         </ul>
@@ -108,7 +107,7 @@ class Footer extends Component {
                                                 <div className="item-right">
                                                     <div className="list-menu">
                                                         <legend>
-                                                            Quick links
+                                                            Theo dõi tôi
                                                         </legend>
                                                         <ul>
                                                             <li>
@@ -116,7 +115,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Discover
+                                                                    Facebook
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -124,8 +123,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Upcoming
-                                                                    Tours
+                                                                    Instagram
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -133,8 +131,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Payment
-                                                                    Options
+                                                                    Youtube
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -142,7 +139,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    FAQs
+                                                                    Đặt tour
                                                                 </NavLink>
                                                             </li>
                                                         </ul>
@@ -153,7 +150,7 @@ class Footer extends Component {
                                                 <div className="item-right">
                                                     <div className="list-menu">
                                                         <legend>
-                                                            Resources
+                                                            Khác
                                                         </legend>
                                                         <ul>
                                                             <li>
@@ -161,7 +158,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Terms of Use
+                                                                    Chính sách bảo mật
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -169,8 +166,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Privacy
-                                                                    Policy
+                                                                    Điều khoản & điều kiện
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -178,7 +174,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Security
+                                                                    Quy chế hoạt động
                                                                 </NavLink>
                                                             </li>
                                                             <li>
@@ -186,7 +182,7 @@ class Footer extends Component {
                                                                     className="navLink-footer"
                                                                     to="#"
                                                                 >
-                                                                    Information
+                                                                    Tải ứng dụng
                                                                 </NavLink>
                                                             </li>
                                                         </ul>

@@ -160,7 +160,7 @@ const HomePage = () => {
                     <Container>
                         <div className="our-tour">
                             <div className="title-our-tour">
-                                <legend>Our Tours</legend>
+                                <legend>TOUR HÈ 2021</legend>
                             </div>
                             <div className="list-our-tour">
                                 <Row>
@@ -172,7 +172,7 @@ const HomePage = () => {
                         </div>
 
                         <div className="top-destination">
-                            <legend>Top Destination</legend>
+                            <legend>Địa điểm nổi bật</legend>
                             <div className="list-destination">
                                 {renderSlide()}
                             </div>
@@ -180,7 +180,7 @@ const HomePage = () => {
 
                         <div className="travel-tip">
                             <div className="title-travel-trip">
-                                <legend>Travel Tips</legend>
+                                <legend>Cẩm nang du lịch</legend>
                             </div>
                             <div className="slide-travel-tip">
                                 <Swiper
